@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOUNDGLUCK | PIANO TULZ v9.24</title>
+<title>SOUNDGLUCK | PIANO TULZ v9.27</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
@@ -152,6 +152,8 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
   display:inline-block;flex-shrink:0;}
 .metro-light.on{background:#39ff14;box-shadow:0 0 7px 2px #39ff14;}
 .metro-light.on-accent{background:#ffe600;box-shadow:0 0 9px 3px #ffe600;}
+.eartype-btn{border-color:#1e293b;background:rgba(0,0,0,0.4);color:#64748b;}
+.eartype-btn.active{border-color:#14b8a6;background:rgba(19,78,74,0.5);color:#5eead4;}
 
 /* 카테고리 네온 칩 (코드반주법 스타일과 동일 팔레트) */
 .cat-chip{padding:6px 12px;border-radius:8px;font-size:11px;font-weight:800;border-width:2px;transition:.15s;}
@@ -207,7 +209,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
     </div>
 
     <h2 class="text-2xl font-black tracking-widest text-white mb-2 uppercase whitespace-nowrap">SOUNDGLUCK &nbsp;|&nbsp; PIANO TULZ</h2>
-    <p class="text-[11px] text-[#ff007f] font-mono tracking-wider uppercase mb-8">l &nbsp; Piano Tulz v9.24</p>
+    <p class="text-[11px] text-[#ff007f] font-mono tracking-wider uppercase mb-8">l &nbsp; Piano Tulz v9.27</p>
 
     <form id="login-form" class="space-y-6">
       <div class="text-left">
@@ -229,7 +231,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
         <i class="fa-solid fa-cloud-arrow-up text-[10px]"></i> Google Sheets Cloud Security Enabled
       </span>
     </div>
-    <p class="text-[10px] text-gray-600 mt-6 font-mono">AUTHORIZED PERSONNEL ONLY // v9.24</p>
+    <p class="text-[10px] text-gray-600 mt-6 font-mono">AUTHORIZED PERSONNEL ONLY // v9.27</p>
   </div>
 </div>
 
@@ -298,6 +300,70 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
   </div>
 </div>
 
+<!-- 이용가이드 모달
+     ⚠️ 유지보수 규칙: 새로운 기능/모드/카테고리가 추가되거나 기존 기능이 크게 바뀔 때마다
+     이 가이드도 반드시 함께 업데이트할 것 (선생님이 학생에게 설명하듯 친절하고 구체적으로:
+     "무엇을 위한 기능인지 / 어떻게 쓰는지 / 무엇에 도움이 되는지" 세 가지를 항상 포함) -->
+<div id="guide-modal" class="fixed inset-0 flex items-center justify-center bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 z-[1200]">
+  <div class="bg-[#08081a] border-2 border-teal-500 shadow-[0_0_50px_rgba(20,184,166,0.3)] rounded-2xl p-8 max-w-3xl w-full relative transform scale-95 transition-transform duration-300" id="guide-modal-content" style="max-height:85vh;overflow-y:auto;">
+    <button onclick="closeGuideModal()" class="sticky top-0 float-right text-gray-500 hover:text-white text-lg bg-[#08081a] px-2">✕</button>
+    <div class="text-center mb-6">
+      <div class="text-3xl mb-2">📖</div>
+      <div class="text-lg font-black text-white tracking-widest">SOUNDGLUCK PIANO TULZ 이용가이드</div>
+      <div class="text-[11px] text-gray-500 mt-1">피아노 선생님이 옆에서 설명해드리듯, 하나씩 차근차근 안내합니다.</div>
+    </div>
+
+    <div class="space-y-6 text-[13px] text-gray-300 leading-relaxed">
+      <section>
+        <h3 class="text-sm font-black text-cyan-400 mb-1.5"><i class="fa-solid fa-play mr-1.5"></i>시작하기 전에</h3>
+        <p>이 앱은 <b>USB MIDI 건반</b>이 있으면 자동으로 인식해서 실제 건반처럼 연주할 수 있고, 건반이 없어도 <b>컴퓨터 키보드(QWERTY)</b>나 <b>마우스 클릭</b>만으로도 똑같이 연주할 수 있습니다. QWERTY 키보드에서는 A키가 지금 옥타브의 '도'가 되고, Z/X 키로 옥타브를 아래/위로 옮길 수 있어요. 헤더의 로고(SOUNDGLUCK | PIANO TULZ)를 누르면 언제든 처음 화면으로 돌아옵니다.</p>
+      </section>
+
+      <section>
+        <h3 class="text-sm font-black text-cyan-400 mb-1.5"><i class="fa-solid fa-sliders mr-1.5"></i>퍼포먼스 모드</h3>
+        <p><b>무엇을 위한 기능인가요?</b> 25가지 악기 음색(그랜드피아노, 일렉트릭피아노, 스트링, 브라스, 벨 등)과 디스토션·EQ·코러스·딜레이·리버브·컴프레서 같은 이펙트를 자유롭게 조합해서 소리를 만들어보는 공간입니다.</p>
+        <p><b>어떻게 사용하나요?</b> 위쪽에서 음색을 고르고, FX 랙의 손잡이(노브)를 조절한 뒤 건반을 눌러 소리를 확인하세요. 마음에 드는 조합을 찾았다면 "셋업 저장하기"로 저장해두고 나중에 그대로 불러올 수 있습니다.</p>
+        <p><b>무엇에 도움이 되나요?</b> 같은 멜로디를 여러 음색으로 쳐보면 귀가 트이고, 나중에 자기만의 연주 스타일(질감)을 찾는 데 큰 도움이 됩니다.</p>
+      </section>
+
+      <section>
+        <h3 class="text-sm font-black text-cyan-400 mb-1.5"><i class="fa-solid fa-graduation-cap mr-1.5"></i>EDU 모드</h3>
+        <p><b>무엇을 위한 기능인가요?</b> 실제 피아노 학원에서 쓰는 커리큘럼 순서(입문 → 하농 → 바이엘 → 체르니 → 소나티네 → 부르크뮐러)를 그대로 옮겨온 정식 연습 공간입니다. 여기에 스케일·아르페지오 전문 연습, 화성 연습(코드 진행 감각), 리듬 훈련, 그리고 <b>청음(귀로 듣고 맞히기)</b> 훈련까지 들어있습니다.</p>
+        <p><b>어떻게 사용하나요?</b> 위의 카테고리 칩에서 원하는 교재를 고르고 곡을 선택한 뒤 "시작"을 누르면 낙하하는 노트를 보며 연습할 수 있습니다. 스케일·아르페지오는 12개 조성 × 4종류를 그 자리에서 만들어주고, 청음 카테고리는 소리를 듣고 객관식으로 맞히거나(음정/코드) 건반으로 그대로 쳐서 맞히는(멜로디 받아쓰기) 퀴즈 방식입니다.</p>
+        <p><b>무엇에 도움이 되나요?</b> "손으로 치는 훈련"과 "귀로 듣는 훈련"을 둘 다 갖춰야 진짜 실력이 됩니다. 정식 교재 순서를 따라가면 독학이어도 체계적으로 실력이 쌓입니다.</p>
+      </section>
+
+      <section>
+        <h3 class="text-sm font-black text-cyan-400 mb-1.5"><i class="fa-solid fa-gamepad mr-1.5"></i>게임 모드</h3>
+        <p><b>무엇을 위한 기능인가요?</b> 118곡 이상의 다양한 장르(동요/클래식/캐롤/오케스트라/K-pop/J-pop/시네마 등)를 리듬게임처럼 재미있게 연습하는 공간입니다.</p>
+        <p><b>어떻게 사용하나요?</b> 카테고리와 곡을 고르고, 오른손/왼손/양손 중 연습할 손을 선택한 뒤 "시작"을 누르세요. 노트가 건반 라인에 닿는 순간 눌러서 판정을 받고, 콤보를 이어가며 점수를 쌓습니다. 도중에 "일시정지"로 멈췄다가 이어할 수 있고, "정지"를 누르면 처음부터 다시 시작됩니다.</p>
+        <p><b>무엇에 도움이 되나요?</b> 게임처럼 반복하다 보면 자연스럽게 곡을 외우게 되고, 정확한 타이밍에 맞춰 치는 리듬 감각이 늘어납니다.</p>
+      </section>
+
+      <section>
+        <h3 class="text-sm font-black text-cyan-400 mb-1.5"><i class="fa-solid fa-music mr-1.5"></i>코드 반주법</h3>
+        <p><b>무엇을 위한 기능인가요?</b> 멜로디 없이도 코드(화음)만으로 반주하는 법을 배우는 공간입니다. 자동재생 데모, 눌러야 할 건반을 알려주는 연습 모드, 그리고 실제 곡의 코드 진행을 처음부터 끝까지 완주하는 모드까지 있습니다.</p>
+        <p><b>어떻게 사용하나요?</b> KEY(조성)를 고르면 그 조성에 맞는 7개 코드가 자동으로 나옵니다. 보이싱(Block/Arpeggio/Walking Bass)으로 반주 스타일을 바꿔보세요. 연습 모드를 켜면 건반에 코드 자리가 표시되고, 그대로 누르면 정답 확인이 됩니다. 코드진행 완주 모드는 이론 패턴·CCM/워십·공개영역 명곡 중 골라서 한 곡을 처음부터 끝까지 코드로 연주해볼 수 있습니다.</p>
+        <p><b>무엇에 도움이 되나요?</b> 코드 반주는 밴드/찬양/작곡·즉흥연주의 기본기입니다. 코드 이름과 손 모양을 몸에 익히면 어떤 노래든 반주할 수 있게 됩니다.</p>
+      </section>
+
+      <section>
+        <h3 class="text-sm font-black text-cyan-400 mb-1.5"><i class="fa-solid fa-file-music mr-1.5"></i>A.I 스코어 노트</h3>
+        <p><b>무엇을 위한 기능인가요?</b> 건반으로 연주한 음을 실시간으로 정식 오선보(높은음자리/낮은음자리) 악보에 자동으로 받아 적어주는 채보 기능입니다. ("A.I"라고 되어 있지만 인공지능 분석이 아니라, 연주한 음의 길이를 표준 음가로 자동 정리해주는 스마트 채보기입니다.)</p>
+        <p><b>어떻게 사용하나요?</b> 채보 버튼을 켜둔 상태로 건반을 연주하면 그대로 오선지에 그려집니다. 음표 팔레트에서 원하는 음가를 골라 오선지에 직접 클릭/드래그로 추가할 수도 있고, 클릭하면 지워집니다. 완성되면 재생 버튼으로 처음부터 다시 들어보거나, PNG/MIDI 파일로 내보낼 수 있습니다.</p>
+        <p><b>무엇에 도움이 되나요?</b> 즉흥연주나 작곡 아이디어를 그 자리에서 악보로 남길 수 있어 편곡·작곡 공부에 좋고, 자신이 친 리듬이 실제로 어떤 음가인지 눈으로 확인하며 배울 수 있습니다.</p>
+      </section>
+
+      <section>
+        <h3 class="text-sm font-black text-cyan-400 mb-1.5"><i class="fa-solid fa-star mr-1.5"></i>모든 모드 공통 기능</h3>
+        <p><b>계이름/코드 표시:</b> 건반 위에 음이름을 표시하거나, 2개 이상 동시에 누르면 어떤 코드인지 배지로 알려줍니다. 화음의 이름을 아직 외우지 못했을 때 특히 유용합니다.</p>
+        <p><b>메트로놈:</b> 각 모드마다 독립적인 메트로놈이 있어 원하는 템포로 박자를 맞추며 연습할 수 있습니다.</p>
+        <p><b>마이페이지:</b> 닉네임을 바꾸고 모드별로 오늘/누적 얼마나 연습했는지 확인할 수 있습니다. 구글 계정으로 로그인하면 이 기록과 나만의 셋업이 클라우드에 저장되어 다른 기기에서도 이어집니다.</p>
+      </section>
+    </div>
+  </div>
+</div>
+
 <!-- 마이페이지 모달 -->
 <div id="mypage-modal" class="fixed inset-0 flex items-center justify-center bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 z-[1200]">
   <div class="bg-[#08081a] border-2 border-purple-500 shadow-[0_0_50px_rgba(168,85,247,0.3)] rounded-2xl p-8 max-w-md w-full relative transform scale-95 transition-transform duration-300" id="mypage-modal-content">
@@ -328,43 +394,33 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
 
 <!-- 메인 앱 -->
 <div id="app-container">
-  <header class="flex flex-col xl:flex-row justify-between items-center bg-[#07071c]/95 border-2 border-[#151538] rounded-2xl p-4 gap-4 w-full">
-    <div class="flex items-center gap-3 shrink-0">
-      <div class="w-11 h-11 rounded-full bg-cyan-950/45 border border-cyan-500 flex items-center justify-center">
-        <i class="fa-solid fa-music text-2xl text-[#00f3ff] drop-shadow-[0_0_10px_#00f3ff]"></i>
-      </div>
-      <div class="whitespace-nowrap">
-        <h1 class="text-xl font-black tracking-widest text-white flex items-center gap-2">
-          SOUNDGLUCK <span class="text-cyan-500 font-light">|</span> PIANO TULZ <span class="text-[#ff007f] font-mono text-[10px] border border-pink-900 px-2 py-0.5 rounded">V9.24</span>
-        </h1>
-        <p class="text-[10px] text-gray-500 font-mono">Universal MIDI Keyboard & Performance Studio Module</p>
-      </div>
-    </div>
-
-    <div class="flex flex-col md:flex-row items-center gap-3 w-full xl:w-auto justify-end">
-      <nav class="flex flex-wrap md:flex-nowrap gap-1 bg-black/60 p-1 rounded-xl border border-gray-800 shrink-0">
-        <button data-tab="chord" id="tab-chord" class="nav-tab active px-2.5 py-2 text-[11px] font-bold text-gray-400 hover:text-white rounded-lg flex items-center gap-1 whitespace-nowrap">
-          <i class="fa-solid fa-music"></i> CHORD ACCOMPANIMENT
+  <header class="flex flex-col bg-[#07071c]/95 border-2 border-[#151538] rounded-2xl p-4 gap-4 w-full">
+    <div class="flex flex-wrap items-center justify-between gap-4 w-full">
+      <button onclick="goHome()" class="flex items-center gap-3 shrink-0 bg-transparent border-none p-0 cursor-pointer hover:opacity-80 transition" style="text-align:left;"
+        data-help="처음 로그인 직후 보게 되는 화면(건반 연결 확인 화면)으로 돌아갑니다." data-tip="어느 모드에 있든 로고를 누르면 언제든 홈으로 돌아올 수 있어요.">
+        <div class="w-11 h-11 rounded-full bg-cyan-950/45 border border-cyan-500 flex items-center justify-center">
+          <i class="fa-solid fa-music text-2xl text-[#00f3ff] drop-shadow-[0_0_10px_#00f3ff]"></i>
+        </div>
+        <div class="whitespace-nowrap">
+          <h1 class="text-xl font-black tracking-widest text-white flex items-center gap-2">
+            SOUNDGLUCK <span class="text-cyan-500 font-light">|</span> PIANO TULZ <span class="text-[#ff007f] font-mono text-[10px] border border-pink-900 px-2 py-0.5 rounded">V9.27</span>
+          </h1>
+          <p class="text-[10px] text-gray-500 font-mono text-left">Universal MIDI Keyboard & Performance Studio Module</p>
+        </div>
+      </button>
+      <div class="flex items-center gap-2 flex-wrap justify-end">
+        <div id="midi-status-badge" class="midi-badge" data-help="USB MIDI 건반이 연결되어 있는지 보여줍니다. 연결되면 초록색으로 바뀌고 기기 이름이 표시됩니다." data-tip="건반이 없어도 컴퓨터 키보드(QWERTY)나 마우스 클릭만으로도 바로 연주할 수 있어요.">
+          <i class="fa-solid fa-plug"></i> OFFLINE
+        </div>
+        <button onclick="openGuideModal()" class="px-3 py-2 text-[11px] font-extrabold text-teal-300 bg-teal-950/45 hover:bg-teal-900/60 border border-teal-800 rounded-lg flex items-center gap-1.5 transition whitespace-nowrap"
+          data-help="모든 모드와 기능을 처음 쓰는 분들을 위한 자세한 사용 설명서입니다." data-tip="뭘 눌러야 할지 모르겠으면 여기부터 확인해보세요.">
+          <i class="fa-solid fa-book-open"></i> 이용가이드
         </button>
-        <button data-tab="perf" id="tab-perf" class="nav-tab px-2.5 py-2 text-[11px] font-bold text-gray-400 hover:text-white rounded-lg flex items-center gap-1 whitespace-nowrap">
-          <i class="fa-solid fa-sliders"></i> PERFORMANCE MODE
-        </button>
-        <button data-tab="score" id="tab-score" class="nav-tab px-2.5 py-2 text-[11px] font-bold text-gray-400 hover:text-white rounded-lg flex items-center gap-1 whitespace-nowrap">
-          <i class="fa-solid fa-file-music"></i> A.I SCORE NOTE
-        </button>
-        <button data-tab="game" id="tab-game" class="nav-tab px-2.5 py-2 text-[11px] font-bold text-gray-400 hover:text-white rounded-lg flex items-center gap-1 whitespace-nowrap">
-          <i class="fa-solid fa-gamepad"></i> GAME MODE
-        </button>
-        <button data-tab="edu" id="tab-edu" class="nav-tab px-2.5 py-2 text-[11px] font-bold text-gray-400 hover:text-white rounded-lg flex items-center gap-1 whitespace-nowrap">
-          <i class="fa-solid fa-graduation-cap"></i> EDU MODE
-        </button>
-      </nav>
-      <div class="flex items-center gap-2 shrink-0">
-        <div id="midi-status-badge" class="midi-badge"><i class="fa-solid fa-plug"></i> OFFLINE</div>
         <button onclick="openChannelModal()" class="px-3 py-2 text-[11px] font-extrabold text-cyan-400 bg-cyan-950/45 hover:bg-cyan-900/60 border border-cyan-800 rounded-lg flex items-center gap-1.5 transition whitespace-nowrap">
           <i class="fa-solid fa-bars"></i> 사운드글룩
         </button>
-        <button onclick="openMyPage()" class="px-3 py-2 text-[11px] font-extrabold text-purple-300 bg-purple-950/45 hover:bg-purple-900/60 border border-purple-800 rounded-lg flex items-center gap-1.5 transition whitespace-nowrap">
+        <button onclick="openMyPage()" class="px-3 py-2 text-[11px] font-extrabold text-purple-300 bg-purple-950/45 hover:bg-purple-900/60 border border-purple-800 rounded-lg flex items-center gap-1.5 transition whitespace-nowrap"
+          data-help="닉네임을 바꾸고, 모드별로 얼마나 연습했는지 누적 시간을 확인할 수 있습니다." data-tip="구글 계정으로 로그인했다면 다른 기기에서도 이 기록이 그대로 이어집니다.">
           <i class="fa-solid fa-user"></i> 마이페이지
         </button>
         <button onclick="handleLogout()" class="px-3 py-2 text-[11px] font-black bg-red-950 hover:bg-red-900/60 border border-red-800 text-red-300 rounded-lg transition whitespace-nowrap">
@@ -372,12 +428,35 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
         </button>
       </div>
     </div>
+
+    <nav class="flex flex-wrap gap-1.5 bg-black/60 p-1.5 rounded-xl border border-gray-800 w-full justify-center">
+      <button data-tab="perf" id="tab-perf" class="nav-tab active px-3 py-2.5 text-[11px] font-bold text-gray-400 hover:text-white rounded-lg flex items-center gap-1.5 whitespace-nowrap flex-1 justify-center"
+        data-help="다양한 악기 음색(피아노/스트링/브라스/벨 등 25종)과 이펙트를 적용해 자유롭게 연주하는 공간입니다." data-tip="같은 곡을 음색만 바꿔가며 쳐보면 소리를 다루는 감각이 빠르게 늡니다.">
+        <i class="fa-solid fa-sliders"></i> PERFORMANCE MODE
+      </button>
+      <button data-tab="edu" id="tab-edu" class="nav-tab px-3 py-2.5 text-[11px] font-bold text-gray-400 hover:text-white rounded-lg flex items-center gap-1.5 whitespace-nowrap flex-1 justify-center"
+        data-help="하농·바이엘·체르니 같은 정통 교재부터 스케일·아르페지오, 청음 훈련까지 체계적으로 실력을 쌓는 커리큘럼입니다." data-tip="처음이라면 '입문' 카테고리부터 순서대로 시작하세요.">
+        <i class="fa-solid fa-graduation-cap"></i> EDU MODE
+      </button>
+      <button data-tab="game" id="tab-game" class="nav-tab px-3 py-2.5 text-[11px] font-bold text-gray-400 hover:text-white rounded-lg flex items-center gap-1.5 whitespace-nowrap flex-1 justify-center"
+        data-help="화면 위에서 떨어지는 노트를 정확한 타이밍에 눌러 점수를 얻는 리듬 게임입니다. 재미있게 곡을 외우고 박자 감각을 기를 수 있습니다." data-tip="처음엔 느린 곡으로 시작해서 콤보를 이어가 보세요.">
+        <i class="fa-solid fa-gamepad"></i> GAME MODE
+      </button>
+      <button data-tab="chord" id="tab-chord" class="nav-tab px-3 py-2.5 text-[11px] font-bold text-gray-400 hover:text-white rounded-lg flex items-center gap-1.5 whitespace-nowrap flex-1 justify-center"
+        data-help="코드(화음) 반주법을 배우는 공간입니다. 코드 가이드, 연습 모드, 실제 곡 코드진행 완주까지 할 수 있습니다." data-tip="멜로디 없이 왼손 반주만으로도 곡의 느낌을 살릴 수 있어요.">
+        <i class="fa-solid fa-music"></i> CHORD ACCOMPANIMENT
+      </button>
+      <button data-tab="score" id="tab-score" class="nav-tab px-3 py-2.5 text-[11px] font-bold text-gray-400 hover:text-white rounded-lg flex items-center gap-1.5 whitespace-nowrap flex-1 justify-center"
+        data-help="건반으로 연주한 음을 실시간으로 정식 오선보 악보에 자동으로 받아 적어주는 채보 기능입니다." data-tip="즉흥연주를 치듯 쳐보면 그 자리에서 악보가 만들어져요.">
+        <i class="fa-solid fa-file-music"></i> A.I SCORE NOTE
+      </button>
+    </nav>
   </header>
 
   <div id="main-panel">
 
     <!-- ================= CHORD ACCOMPANIMENT ================= -->
-    <div id="content-chord" class="flex flex-col gap-4">
+    <div id="content-chord" class="hidden flex flex-col gap-4">
       <div class="bg-black/30 border border-gray-800 rounded-xl p-4">
         <h2 class="text-sm font-black text-[#00f3ff] tracking-widest uppercase flex items-center gap-1.5">
           <i class="fa-solid fa-music"></i> Chord Accompaniment Trainer
@@ -453,7 +532,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
     </div>
 
     <!-- ================= PERFORMANCE MODE ================= -->
-    <div id="content-perf" class="hidden flex flex-col gap-4">
+    <div id="content-perf" class="flex flex-col gap-4">
 
       <div class="bg-black/30 border border-gray-800 rounded-xl p-4 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
         <div>
@@ -793,6 +872,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
             <button data-hand="B" class="hand-btn px-3 py-2 text-[11px] font-bold text-cyan-300 bg-cyan-950/40">양손</button>
           </div>
           <button id="btnGameStart" class="px-4 py-2 bg-green-950/40 hover:bg-green-900 border border-green-700 text-xs text-green-300 font-bold rounded-lg transition">▶ 시작</button>
+          <button id="btnGamePause" class="px-4 py-2 bg-yellow-950/40 hover:bg-yellow-900 border border-yellow-700 text-xs text-yellow-300 font-bold rounded-lg transition">⏸ 일시정지</button>
           <button id="btnGameStop" class="px-4 py-2 bg-red-950/40 hover:bg-red-900 border border-red-700 text-xs text-red-300 font-bold rounded-lg transition">■ 정지</button>
         </div>
       </div>
@@ -849,6 +929,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
         </div>
       </div>
 
+      <div id="eduNormalPanel" class="flex flex-col gap-4">
       <div class="bg-black/30 border border-gray-800 rounded-xl p-4 flex flex-wrap items-center gap-4">
         <div class="flex bg-black/40 border border-gray-800 rounded-lg overflow-hidden">
           <button data-hand="R" class="edu-hand-btn px-3 py-2 text-[11px] font-bold text-gray-400">오른손</button>
@@ -875,6 +956,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
           </select>
         </div>
         <button id="btnEduStart" class="px-4 py-2 bg-green-950/40 hover:bg-green-900 border border-green-700 text-xs text-green-300 font-bold rounded-lg transition">▶ 시작</button>
+        <button id="btnEduPause" class="px-4 py-2 bg-yellow-950/40 hover:bg-yellow-900 border border-yellow-700 text-xs text-yellow-300 font-bold rounded-lg transition">⏸ 일시정지</button>
         <button id="btnEduStop" class="px-4 py-2 bg-red-950/40 hover:bg-red-900 border border-red-700 text-xs text-red-300 font-bold rounded-lg transition">■ 정지</button>
       </div>
 
@@ -887,7 +969,27 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
       <div id="eduCanvasWrap" style="overflow-x:auto;">
         <canvas id="eduCanvas" height="420"></canvas>
       </div>
-    </div>
+      </div>
+
+      <!-- 청음(Ear Training) 전용 패널: 낙하노트 방식이 아니라 듣고 맞히는 퀴즈 형태라 별도 UI 사용 -->
+      <div id="eduEarPanel" class="hidden flex flex-col gap-4">
+        <div class="bg-black/30 border border-gray-800 rounded-xl p-4 flex flex-col gap-3">
+          <div class="flex flex-wrap gap-2">
+            <button data-eartype="interval" class="eartype-btn active px-3 py-2 text-[11px] font-bold rounded-lg border transition">🎵 음정 맞히기</button>
+            <button data-eartype="chord" class="eartype-btn px-3 py-2 text-[11px] font-bold rounded-lg border transition">🎹 코드 맞히기</button>
+            <button data-eartype="melody" class="eartype-btn px-3 py-2 text-[11px] font-bold rounded-lg border transition">✍️ 멜로디 받아쓰기</button>
+          </div>
+          <div class="flex flex-wrap items-center gap-3">
+            <button id="btnEarPlay" class="px-4 py-2 bg-green-950/40 hover:bg-green-900 border border-green-700 text-xs text-green-300 font-bold rounded-lg transition">🔊 문제 재생</button>
+            <button id="btnEarNext" class="px-4 py-2 bg-black/40 hover:bg-gray-800 border border-gray-700 text-xs text-gray-300 font-bold rounded-lg transition">⏭ 다음 문제</button>
+            <div class="bg-black/40 border border-gray-800 rounded-lg px-4 py-2 text-xs"><span class="text-gray-500">점수</span> <span id="earScore" class="text-cyan-300 font-bold ml-2">0</span></div>
+            <div class="bg-black/40 border border-gray-800 rounded-lg px-4 py-2 text-xs"><span class="text-gray-500">연속정답</span> <span id="earStreak" class="text-yellow-300 font-bold ml-2">0</span></div>
+          </div>
+          <div id="earChoicesWrap" class="flex flex-wrap gap-2"></div>
+          <div id="earMelodyStatus" class="hidden text-[12px] text-gray-300">건반으로 방금 들은 멜로디를 그대로 쳐보세요. (<span id="earMelodyProgress">0/0</span>)</div>
+          <div id="earFeedback" class="text-sm font-bold min-h-[20px]"></div>
+        </div>
+      </div>
 
     <!-- 공유 건반 -->
     <div class="bg-black/30 border border-gray-800 rounded-xl p-4 mt-2">
@@ -929,8 +1031,9 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
     <p class="text-xs text-gray-400 font-mono font-bold tracking-wider">
       © 2026 SOUNDGLUCK. All Rights Reserved.
     </p>
-    <p class="text-xs text-red-500 font-bold tracking-wide uppercase mt-3 leading-relaxed px-4 text-center max-w-5xl mx-auto drop-shadow-[0_2px_10px_rgba(255,0,60,0.15)]">
-      ⚠️ WARNING: SOUNDGLUCK PIANO TULZ는 SOUNDGLUCK에서 독점 라이선스 권한을 확보하여 자체 개발하고 빌드한 고유의 독창적 소프트웨어 자산입니다. 당사의 명시적인 서면 동의 없는 무단 불법 복제, 파일 배포, 소스 도용 및 상업적 목적의 무단 사용 행위는 저작권법 및 부정경쟁방지법 등 관련 법령에 의거하여 예외 없는 강력한 법적 대응 및 민형사상 손해배상 처벌을 받게 됩니다.
+    <p class="text-xs text-red-500 font-bold tracking-wide uppercase mt-3 leading-relaxed px-4 text-center max-w-6xl mx-auto drop-shadow-[0_2px_10px_rgba(255,0,60,0.15)]">
+      ⚠️ WARNING: SOUNDGLUCK PIANO TULZ는 SOUNDGLUCK에서 독점 라이선스 권한을 확보하여 자체 개발하고 빌드한 고유의 독창적 소프트웨어 자산입니다.<br>
+      당사의 명시적인 서면 동의 없는 무단 불법 복제, 파일 배포, 소스 도용 및 상업적 목적의 무단 사용 행위는 저작권법 및 부정경쟁방지법 등 관련 법령에 의거하여 예외 없는 강력한 법적 대응 및 민형사상 손해배상 처벌을 받게 됩니다.
     </p>
   </footer>
 </div>
@@ -1221,6 +1324,7 @@ function highlightKey(note, on){
   if(on) activeLaneNotes.add(note); else activeLaneNotes.delete(note);
   updateLiveChordBadge();
   if(typeof checkChordPracticeMatch==='function') checkChordPracticeMatch();
+  if(typeof checkEarTrainingInput==='function') checkEarTrainingInput(note, on);
 }
 
 const INTERVAL_NAMES = ['완전1도(유니즌)','단2도','장2도','단3도','장3도','완전4도','증4도/감5도','완전5도','단6도','장6도','단7도','장7도'];
@@ -1643,8 +1747,14 @@ function closeMyPage(){
   modal.classList.add('pointer-events-none','opacity-0');
   document.getElementById('mypage-modal-content').classList.add('scale-95');
 }
+let mypageMouseDownOnBackdrop = false;
+document.getElementById('mypage-modal').addEventListener('mousedown', (e)=>{
+  mypageMouseDownOnBackdrop = (e.target.id==='mypage-modal');
+});
 document.getElementById('mypage-modal').addEventListener('click', (e)=>{
-  if(e.target.id==='mypage-modal') closeMyPage();
+  // 닉네임 입력창 등 모달 내부에서 드래그를 시작해 바깥으로 마우스가 나간 경우까지 닫히지 않도록,
+  // 마우스를 누른 시점과 뗀 시점(click) 둘 다 배경 자체였을 때만 모달을 닫음
+  if(e.target.id==='mypage-modal' && mypageMouseDownOnBackdrop) closeMyPage();
 });
 async function saveMyNickname(){
   const statusEl = document.getElementById('mypage-nickname-status');
@@ -1674,6 +1784,30 @@ document.getElementById('channel-modal').addEventListener('click', (e)=>{
 });
 
 /* ===================== 로그아웃 ===================== */
+function goHome(){
+  document.getElementById('app-container').style.display='none';
+  document.getElementById('onboarding-screen').style.display='flex';
+}
+
+/* ===================== 이용가이드 모달 ===================== */
+function openGuideModal(){
+  const modal = document.getElementById('guide-modal');
+  modal.classList.remove('pointer-events-none','opacity-0');
+  document.getElementById('guide-modal-content').classList.remove('scale-95');
+}
+function closeGuideModal(){
+  const modal = document.getElementById('guide-modal');
+  modal.classList.add('pointer-events-none','opacity-0');
+  document.getElementById('guide-modal-content').classList.add('scale-95');
+}
+let guideMouseDownOnBackdrop = false;
+document.getElementById('guide-modal').addEventListener('mousedown', (e)=>{
+  guideMouseDownOnBackdrop = (e.target.id==='guide-modal');
+});
+document.getElementById('guide-modal').addEventListener('click', (e)=>{
+  if(e.target.id==='guide-modal' && guideMouseDownOnBackdrop) closeGuideModal();
+});
+
 function handleLogout(){
   logPracticeSession(); // 로그아웃 직전까지 머문 시간 기록
   Object.keys(voices).length && voices.forEach && null;
@@ -2493,6 +2627,8 @@ let barlines = []; // {targetTime}
 let beatsPerMeasure = 4;
 let lastPlaySongArgs = null; // 자동 반복 재생을 위해 마지막 재생 인자를 기억
 let gameLoopTimeout = null;
+let gamePaused = false;
+let gamePauseStart = 0;
 
 function playSong(songArray, handMode, beatMs, ui, timeSig, keepScore){
   if(audioCtx.state==='suspended') audioCtx.resume();
@@ -2518,12 +2654,15 @@ function playSong(songArray, handMode, beatMs, ui, timeSig, keepScore){
   }
   document.getElementById(ui.judgment).innerText='-';
   gameActive = true;
+  gamePaused = false;
+  updateGamePauseButtons();
   requestAnimationFrame(gameRenderLoop);
 }
 
 function startGame(){ playSong(GAME_SONGS[currentGameSong].song, gameHandMode, 500, {canvas:'gameCanvas', score:'gameScore', combo:'gameCombo', judgment:'gameJudgment'}, 4); }
 function stopGame(){
   gameActive=false;
+  gamePaused=false;
   if(gameLoopTimeout){ clearTimeout(gameLoopTimeout); gameLoopTimeout=null; }
   // 정지 후 화면이 마지막 프레임에 멈춰있는 것처럼 보이지 않도록 캔버스를 깨끗이 지우고 판정/이펙트도 초기화
   // (재생하려면 시작 버튼을 다시 누르면 처음부터 새로 시작됩니다)
@@ -2533,9 +2672,40 @@ function stopGame(){
   if(canvasEl){ canvasEl.getContext('2d').clearRect(0,0,canvasEl.width,canvasEl.height); }
   const judgEl = document.getElementById(activeUI.judgment);
   if(judgEl) judgEl.innerText = '정지됨 (시작을 누르면 처음부터 다시 재생)';
+  updateGamePauseButtons();
+}
+
+// 일시정지: 지금 이 순간(performance.now())을 기록해두고 화면 갱신을 멈춤(마지막 프레임 그대로 유지)
+function pauseGame(){
+  if(!gameActive || gamePaused) return;
+  gamePaused = true;
+  gamePauseStart = performance.now();
+  updateGamePauseButtons();
+}
+// 다시 재생: 멈춰있던 시간만큼 모든 노트/마디선의 목표 시각을 뒤로 밀어서, 정지했던 바로 그 지점부터 이어짐
+function resumeGame(){
+  if(!gameActive || !gamePaused) return;
+  const pauseDuration = performance.now() - gamePauseStart;
+  gameStartTime += pauseDuration;
+  gameNotes.forEach(n=>{ n.targetTime += pauseDuration; });
+  barlines.forEach(b=>{ b.targetTime += pauseDuration; });
+  gamePaused = false;
+  updateGamePauseButtons();
+  requestAnimationFrame(gameRenderLoop);
+}
+function toggleGamePause(){
+  if(gamePaused) resumeGame(); else pauseGame();
+}
+function updateGamePauseButtons(){
+  ['btnGamePause','btnEduPause'].forEach(id=>{
+    const btn = document.getElementById(id);
+    if(!btn) return;
+    btn.innerHTML = gamePaused ? '▶ 이어하기' : '⏸ 일시정지';
+  });
 }
 
 document.getElementById('btnGameStart').addEventListener('click', startGame);
+document.getElementById('btnGamePause').addEventListener('click', toggleGamePause);
 document.getElementById('btnGameStop').addEventListener('click', stopGame);
 
 /* ---- 판정 이펙트: 파티클 버스트 + 글로우 텍스트 + 건반 플래시 ---- */
@@ -2588,7 +2758,7 @@ function gameCheckHit(note){
 }
 
 function gameRenderLoop(){
-  if(!gameActive) return;
+  if(!gameActive || gamePaused) return;
   const canvas = document.getElementById(activeUI.canvas);
   canvas.width = Math.max(keyboardTotalWidth, 400);
   const ctx = canvas.getContext('2d');
@@ -2802,9 +2972,9 @@ const EDU_PIECES = {
   harmony9: {label:'화성 연습 9 (I-IV-V-I 진행, 점층적 복잡화)', level:'중급', method:'자체구성', song:[{note:48,beat:0,hand:'L'},{note:60,beat:0,hand:'R'},{note:64,beat:0,hand:'R'},{note:67,beat:0,hand:'R'},{note:53,beat:4,hand:'L'},{note:60,beat:4,hand:'R'},{note:65,beat:4,hand:'R'},{note:69,beat:4,hand:'R'},{note:55,beat:8,hand:'L'},{note:59,beat:8,hand:'R'},{note:62,beat:8,hand:'R'},{note:67,beat:8,hand:'R'},{note:48,beat:12,hand:'L'},{note:60,beat:12,hand:'R'},{note:64,beat:12,hand:'R'},{note:67,beat:12,hand:'R'},{note:48,beat:16,hand:'L'},{note:60,beat:16,hand:'R'},{note:64,beat:16,hand:'R'},{note:67,beat:16,hand:'R'},{note:53,beat:19,hand:'L'},{note:60,beat:19,hand:'R'},{note:65,beat:19,hand:'R'},{note:69,beat:19,hand:'R'},{note:55,beat:22,hand:'L'},{note:59,beat:22,hand:'R'},{note:62,beat:22,hand:'R'},{note:67,beat:22,hand:'R'},{note:48,beat:25,hand:'L'},{note:60,beat:25,hand:'R'},{note:64,beat:25,hand:'R'},{note:67,beat:25,hand:'R'},{note:48,beat:28,hand:'L'},{note:60,beat:28,hand:'R'},{note:64,beat:28,hand:'R'},{note:67,beat:28,hand:'R'},{note:53,beat:30,hand:'L'},{note:60,beat:30,hand:'R'},{note:65,beat:30,hand:'R'},{note:69,beat:30,hand:'R'},{note:55,beat:32,hand:'L'},{note:59,beat:32,hand:'R'},{note:62,beat:32,hand:'R'},{note:67,beat:32,hand:'R'},{note:48,beat:34,hand:'L'},{note:60,beat:34,hand:'R'},{note:64,beat:34,hand:'R'},{note:67,beat:34,hand:'R'},{note:48,beat:36,hand:'L'},{note:60,beat:36,hand:'R'},{note:64,beat:36,hand:'R'},{note:67,beat:36,hand:'R'},{note:53,beat:37,hand:'L'},{note:60,beat:37,hand:'R'},{note:65,beat:37,hand:'R'},{note:69,beat:37,hand:'R'},{note:55,beat:38,hand:'L'},{note:59,beat:38,hand:'R'},{note:62,beat:38,hand:'R'},{note:67,beat:38,hand:'R'},{note:48,beat:39,hand:'L'},{note:60,beat:39,hand:'R'},{note:64,beat:39,hand:'R'},{note:67,beat:39,hand:'R'}]},
   harmony10: {label:'화성 연습 10 (텐션 보이싱 연결, 점층적 복잡화)', level:'고급', method:'자체구성', song:[{note:45,beat:0,hand:"L"},{note:60,beat:0,hand:"R"},{note:64,beat:0.5,hand:"R"},{note:69,beat:1,hand:"R"},{note:50,beat:2,hand:"L"},{note:62,beat:2,hand:"R"},{note:65,beat:2.5,hand:"R"},{note:69,beat:3,hand:"R"},{note:43,beat:4,hand:"L"},{note:59,beat:4,hand:"R"},{note:64,beat:4.5,hand:"R"},{note:67,beat:5,hand:"R"},{note:48,beat:6,hand:"L"},{note:60,beat:6,hand:"R"},{note:64,beat:6.5,hand:"R"},{note:67,beat:7,hand:"R"},{note:45,beat:8,hand:"L"},{note:60,beat:8,hand:"R"},{note:64,beat:8.5,hand:"R"},{note:69,beat:9,hand:"R"},{note:50,beat:10,hand:"L"},{note:62,beat:10,hand:"R"},{note:65,beat:10.5,hand:"R"},{note:69,beat:11,hand:"R"},{note:43,beat:12,hand:"L"},{note:59,beat:12,hand:"R"},{note:64,beat:12.5,hand:"R"},{note:67,beat:13,hand:"R"},{note:48,beat:14,hand:"L"},{note:60,beat:14,hand:"R"},{note:64,beat:14.5,hand:"R"},{note:67,beat:15,hand:"R"},{note:45,beat:16,hand:"L"},{note:60,beat:16,hand:"R"},{note:64,beat:16.5,hand:"R"},{note:69,beat:17,hand:"R"},{note:50,beat:18,hand:"L"},{note:62,beat:18,hand:"R"},{note:65,beat:18.5,hand:"R"},{note:69,beat:19,hand:"R"},{note:43,beat:20,hand:"L"},{note:59,beat:20,hand:"R"},{note:64,beat:20.5,hand:"R"},{note:67,beat:21,hand:"R"},{note:48,beat:22,hand:"L"},{note:60,beat:22,hand:"R"},{note:64,beat:22.5,hand:"R"},{note:72,beat:23,hand:"R"}]}
 };;
-const EDU_METHOD_ORDER = ['입문','Hanon','Beyer','Czerny','Sonatina','Burgmüller','스케일아르페지오','자체구성','리듬훈련'];
-const EDU_METHOD_LABELS = {'입문':'입문(왕초보)', Hanon:'하농', Beyer:'바이엘', Czerny:'체르니100', Sonatina:'소나티네', 'Burgmüller':'부르크뮐러', '스케일아르페지오':'스케일·아르페지오', '자체구성':'화성연습', '리듬훈련':'리듬훈련'};
-const EDU_METHOD_COLOR = {'입문':'blue', Hanon:'cyan', Beyer:'pink', Czerny:'yellow', Sonatina:'green', 'Burgmüller':'purple', '스케일아르페지오':'lime', '자체구성':'orange', '리듬훈련':'red'};
+const EDU_METHOD_ORDER = ['입문','Hanon','Beyer','Czerny','Sonatina','Burgmüller','스케일아르페지오','자체구성','리듬훈련','청음'];
+const EDU_METHOD_LABELS = {'입문':'입문(왕초보)', Hanon:'하농', Beyer:'바이엘', Czerny:'체르니100', Sonatina:'소나티네', 'Burgmüller':'부르크뮐러', '스케일아르페지오':'스케일·아르페지오', '자체구성':'화성연습', '리듬훈련':'리듬훈련', '청음':'청음(Ear Training)'};
+const EDU_METHOD_COLOR = {'입문':'blue', Hanon:'cyan', Beyer:'pink', Czerny:'yellow', Sonatina:'green', 'Burgmüller':'purple', '스케일아르페지오':'lime', '자체구성':'orange', '리듬훈련':'red', '청음':'teal'};
 let currentEduMethod = '입문';
 let currentEduPiece = 'beginner1';
 let eduHandMode = 'B';
@@ -2828,6 +2998,14 @@ function renderEduMethodRow(){
   });
 }
 function renderEduPieceSelect(){
+  const isEar = currentEduMethod==='청음';
+  document.getElementById('eduNormalPanel').classList.toggle('hidden', isEar);
+  document.getElementById('eduEarPanel').classList.toggle('hidden', !isEar);
+  if(isEar){
+    if(typeof stopGame==='function') stopGame(); // 청음으로 전환 시 낙하노트 재생 중이었다면 정지
+    generateEarQuestion();
+    return;
+  }
   const isScaleArp = currentEduMethod==='스케일아르페지오';
   document.getElementById('eduPieceSelectRow').classList.toggle('hidden', isScaleArp);
   document.getElementById('eduScaleArpControls').classList.toggle('hidden', !isScaleArp);
@@ -2973,8 +3151,146 @@ function startEdu(){
   playSong(getCurrentEduSong(), eduHandMode, beatMs, {canvas:'eduCanvas', score:'eduScore', combo:'eduCombo', judgment:'eduJudgment'}, beatsInMeasure);
 }
 document.getElementById('btnEduStart').addEventListener('click', startEdu);
+document.getElementById('btnEduPause').addEventListener('click', toggleGamePause);
 document.getElementById('btnEduStop').addEventListener('click', stopGame);
 document.getElementById('btnEduStop').addEventListener('click', stopEduMetronome);
+
+/* ===================== 청음(Ear Training) ===================== */
+const INTERVAL_TRAINING_LIST = [
+  {semitones:1, label:'단2도'}, {semitones:2, label:'장2도'},
+  {semitones:3, label:'단3도'}, {semitones:4, label:'장3도'},
+  {semitones:5, label:'완전4도'}, {semitones:6, label:'증4도/감5도'},
+  {semitones:7, label:'완전5도'}, {semitones:8, label:'단6도'},
+  {semitones:9, label:'장6도'}, {semitones:10, label:'단7도'},
+  {semitones:11, label:'장7도'}, {semitones:12, label:'완전8도'}
+];
+const CHORD_TRAINING_LIST = [
+  {intervals:[0,4,7], label:'장3화음'}, {intervals:[0,3,7], label:'단3화음'},
+  {intervals:[0,3,6], label:'감3화음'}, {intervals:[0,4,8], label:'증3화음'},
+  {intervals:[0,4,7,11], label:'장7화음'}, {intervals:[0,4,7,10], label:'딸림7화음'},
+  {intervals:[0,3,7,10], label:'단7화음'}, {intervals:[0,3,6,10], label:'반감7화음(m7b5)'},
+  {intervals:[0,3,6,9], label:'감7화음'}
+];
+let earMode = 'interval'; // interval | chord | melody
+let earScore = 0, earStreak = 0;
+let earCurrentAnswer = null;
+let earMelodyExpected = [];
+let earMelodyInput = [];
+let earTrainingActive = false; // 멜로디 받아쓰기: 지금 건반 입력을 정답 체크에 반영할지 여부
+
+function playEarNote(note, holdMs){
+  if(audioCtx.state==='suspended') audioCtx.resume();
+  noteOn(note, 0.8, true);
+  setTimeout(()=> noteOff(note), holdMs || 500);
+}
+
+function generateEarQuestion(){
+  const fb = document.getElementById('earFeedback');
+  if(fb) fb.innerHTML = '';
+  document.getElementById('earMelodyStatus').classList.add('hidden');
+  earTrainingActive = false;
+
+  if(earMode==='interval'){
+    const item = INTERVAL_TRAINING_LIST[Math.floor(Math.random()*INTERVAL_TRAINING_LIST.length)];
+    const root = 55 + Math.floor(Math.random()*13); // G3~G4 근처 랜덤 루트
+    earCurrentAnswer = {type:'interval', label:item.label, notes:[root, root+item.semitones]};
+    renderEarChoices(INTERVAL_TRAINING_LIST.map(x=>x.label), item.label);
+  } else if(earMode==='chord'){
+    const item = CHORD_TRAINING_LIST[Math.floor(Math.random()*CHORD_TRAINING_LIST.length)];
+    const root = 50 + Math.floor(Math.random()*10);
+    earCurrentAnswer = {type:'chord', label:item.label, notes:item.intervals.map(iv=>root+iv)};
+    renderEarChoices(CHORD_TRAINING_LIST.map(x=>x.label), item.label);
+  } else {
+    const scale = [0,2,4,5,7,9,11];
+    const root = 60;
+    const len = 3 + Math.floor(Math.random()*3); // 3~5음
+    const notes = [];
+    for(let i=0;i<len;i++){ notes.push(root + scale[Math.floor(Math.random()*scale.length)]); }
+    earCurrentAnswer = {type:'melody', notes};
+    earMelodyExpected = notes.slice();
+    earMelodyInput = [];
+    document.getElementById('earMelodyProgress').innerText = `0/${notes.length}`;
+    document.getElementById('earChoicesWrap').innerHTML = '';
+    document.getElementById('earMelodyStatus').classList.remove('hidden');
+    earTrainingActive = true;
+  }
+}
+
+function playEarQuestion(){
+  if(!earCurrentAnswer) return;
+  if(earCurrentAnswer.type==='melody'){
+    earCurrentAnswer.notes.forEach((n,i)=> setTimeout(()=> playEarNote(n, 450), i*550));
+  } else if(earCurrentAnswer.type==='interval'){
+    playEarNote(earCurrentAnswer.notes[0], 500);
+    setTimeout(()=> playEarNote(earCurrentAnswer.notes[1], 500), 650);
+    setTimeout(()=> earCurrentAnswer.notes.forEach(n=> playEarNote(n, 700)), 1400); // 화성적으로 동시에도 한번 더
+  } else { // chord
+    earCurrentAnswer.notes.forEach(n=> playEarNote(n, 900));
+  }
+}
+
+function renderEarChoices(allLabels, correctLabel){
+  const wrap = document.getElementById('earChoicesWrap');
+  wrap.innerHTML='';
+  allLabels.forEach(label=>{
+    const btn = document.createElement('button');
+    btn.className = 'px-3 py-2 bg-black/40 hover:bg-teal-950/60 border border-gray-700 hover:border-teal-600 text-[11px] text-gray-300 font-bold rounded-lg transition';
+    btn.innerText = label;
+    btn.addEventListener('click', ()=> checkEarChoiceAnswer(label, correctLabel, btn));
+    wrap.appendChild(btn);
+  });
+}
+
+function checkEarChoiceAnswer(picked, correct, btnEl){
+  const fb = document.getElementById('earFeedback');
+  if(picked===correct){
+    earScore++; earStreak++;
+    fb.innerHTML = '<span style="color:#39ff14">정답입니다! ('+correct+')</span>';
+    btnEl.style.borderColor = '#39ff14';
+  } else {
+    earStreak = 0;
+    fb.innerHTML = '<span style="color:#ff003c">틀렸습니다. 정답: '+correct+'</span>';
+    btnEl.style.borderColor = '#ff003c';
+  }
+  document.getElementById('earScore').innerText = earScore;
+  document.getElementById('earStreak').innerText = earStreak;
+  document.querySelectorAll('#earChoicesWrap button').forEach(b=> b.disabled=true);
+  setTimeout(generateEarQuestion, 1600);
+}
+
+// 멜로디 받아쓰기: highlightKey()에서 건반이 눌릴 때마다(입력수단 무관) 호출됨
+function checkEarTrainingInput(note, on){
+  if(!earTrainingActive || !on) return;
+  const idx = earMelodyInput.length;
+  earMelodyInput.push(note);
+  document.getElementById('earMelodyProgress').innerText = `${earMelodyInput.length}/${earMelodyExpected.length}`;
+  const fb = document.getElementById('earFeedback');
+  if(note !== earMelodyExpected[idx]){
+    earTrainingActive = false;
+    earStreak = 0;
+    fb.innerHTML = '<span style="color:#ff003c">틀렸습니다. "다음 문제"를 눌러 새로 도전하세요.</span>';
+    document.getElementById('earStreak').innerText = earStreak;
+    return;
+  }
+  if(earMelodyInput.length === earMelodyExpected.length){
+    earTrainingActive = false;
+    earScore++; earStreak++;
+    fb.innerHTML = '<span style="color:#39ff14">정답입니다!</span>';
+    document.getElementById('earScore').innerText = earScore;
+    document.getElementById('earStreak').innerText = earStreak;
+    setTimeout(generateEarQuestion, 1600);
+  }
+}
+
+document.querySelectorAll('.eartype-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    earMode = btn.dataset.eartype;
+    document.querySelectorAll('.eartype-btn').forEach(b=> b.classList.toggle('active', b===btn));
+    generateEarQuestion();
+  });
+});
+document.getElementById('btnEarPlay').addEventListener('click', playEarQuestion);
+document.getElementById('btnEarNext').addEventListener('click', generateEarQuestion);
 
 renderEduMethodRow();
 renderEduPieceSelect();
