@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOUNDGLUCK | PIANO TULZ v9.35</title>
+<title>SOUNDGLUCK | PIANO TULZ v9.36</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -222,7 +222,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
 
 <!-- 로그인 화면 (Drum Tulz와 동일한 아이덴티티) -->
 <div id="login-screen">
-  <div class="bg-[#070715]/95 border-2 border-[#00f3ff] shadow-[0_0_40px_rgba(0,243,255,0.2)] rounded-2xl p-10 max-w-lg w-full text-center backdrop-blur-md transition-all duration-300">
+  <div class="bg-[#070715]/95 border-2 border-[#00f3ff] shadow-[0_0_40px_rgba(0,243,255,0.2)] rounded-2xl p-10 max-w-lg w-full text-center backdrop-blur-md transition-all duration-300 max-h-[85vh] overflow-y-auto">
     <div class="flex justify-center mb-6">
       <div class="w-20 h-20 rounded-full bg-cyan-950/45 border-2 border-cyan-500 flex items-center justify-center shadow-[0_0_20px_rgba(0,243,255,0.35)]">
         <i class="fa-solid fa-music text-4xl text-[#00f3ff]"></i>
@@ -258,7 +258,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
 
 <!-- 온보딩: USB 연결 가이드 (Drum Tulz와 동일한 마크업/색상, 매핑단계 없음) -->
 <div id="onboarding-screen">
-  <div id="onboarding-card-main" class="bg-[#0a0a20] border-2 border-cyan-500/80 shadow-[0_0_50px_rgba(0,243,255,0.15)] rounded-2xl p-8 max-w-2xl w-full backdrop-blur-md">
+  <div id="onboarding-card-main" class="bg-[#0a0a20] border-2 border-cyan-500/80 shadow-[0_0_50px_rgba(0,243,255,0.15)] rounded-2xl p-8 max-w-2xl w-full backdrop-blur-md max-h-[85vh] overflow-y-auto">
     <div class="mb-5 p-4 bg-amber-950/30 border-2 border-amber-600/70 rounded-xl" data-help="PIANO TULZ는 Web MIDI 기술을 사용하기 때문에 이 기술을 지원하는 브라우저에서만 정상 작동합니다." data-tip="크롬이나 엣지가 없다면 무료로 설치할 수 있어요.">
       <h3 class="text-sm font-black text-amber-300 flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation"></i> 브라우저 확인</h3>
       <p class="text-[11px] text-amber-100/90 mt-1.5 leading-relaxed">PIANO TULZ는 <b class="text-white">구글 크롬(Chrome)</b>과 <b class="text-white">윈도우 엣지(Edge)</b> 브라우저에 최적화되어 있습니다.<br>그 외 브라우저(사파리, 인터넷 익스플로러 등)는 건반 인식이 안 되거나 일부 기능 사용이 어려울 수 있습니다.</p>
@@ -307,7 +307,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
 
 <!-- 사운드글룩 공식채널 팝업 -->
 <div id="channel-modal" class="fixed inset-0 flex items-center justify-center overflow-y-auto bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 z-[1200]" role="dialog" aria-modal="true" aria-label="사운드글룩 공식채널">
-  <div class="bg-[#08081a] border-2 border-cyan-500 shadow-[0_0_50px_rgba(0,243,255,0.3)] rounded-2xl p-8 max-w-md w-full relative transform scale-95 transition-transform duration-300" id="channel-modal-content">
+  <div class="bg-[#08081a] border-2 border-cyan-500 shadow-[0_0_50px_rgba(0,243,255,0.3)] rounded-2xl p-8 max-w-md w-full relative transform scale-95 transition-transform duration-300 max-h-[85vh] overflow-y-auto" id="channel-modal-content">
     <button onclick="closeChannelModal()" class="absolute top-4 right-4 text-gray-500 hover:text-white text-lg" aria-label="닫기">✕</button>
     <div class="text-center mb-5">
       <div class="text-3xl mb-2">🔗</div>
@@ -344,6 +344,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
         <h3 class="text-sm font-black text-cyan-400 mb-1.5"><i class="fa-solid fa-play mr-1.5"></i>시작하기 전에</h3>
         <p>이 앱은 <b>USB MIDI 건반</b>이 있으면 자동으로 인식해서 실제 건반처럼 연주할 수 있고, 건반이 없어도 <b>컴퓨터 키보드(QWERTY)</b>나 <b>마우스 클릭</b>만으로도 똑같이 연주할 수 있습니다. QWERTY 키보드에서는 A키가 지금 옥타브의 '도'가 되고, Z/X 키로 옥타브를 아래/위로 옮길 수 있어요. 헤더의 로고(SOUNDGLUCK | PIANO TULZ)를 누르면 언제든 <b>퍼포먼스 모드(첫 화면)</b>로 돌아옵니다.</p>
         <p><b>브라우저 안내:</b> 이 앱은 <b>구글 크롬(Chrome)</b>과 <b>윈도우 엣지(Edge)</b>에 최적화되어 있습니다. 로그인 후 건반 연결 확인 화면에서 안내되며, 그 외 브라우저는 건반 인식이 어려울 수 있습니다.</p>
+        <p><b>권장 기기:</b> USB MIDI 건반 연결, 넓은 화면의 이펙트 랙·오선보 편집 등을 고려하면 <b>노트북 또는 데스크탑 PC</b>에서 사용하시는 것을 권장합니다. 모바일이나 태블릿으로 접속하시는 경우에는 반드시 <b>가로 모드</b>로 사용해주세요 — 건반 폭이 넓어서 세로 모드에서는 화면이 잘리거나 조작이 불편할 수 있습니다(세로로 들고 있으면 화면 상단에 안내 배너가 자동으로 뜹니다).</p>
         <p><b>건반 연결이 안 될 때:</b> "연결상태 확인" 버튼을 누르면 성공/실패 여부가 바로 표시됩니다. 인식이 안 된다면 ①USB 케이블이 PC와 건반 양쪽에 제대로 꽂혀 있는지, ②제품이 USB MIDI 출력을 지원하는 모델인지 확인해보세요. 건반이 없어도 "바로 시작하기"로 QWERTY/마우스 연주가 가능합니다.</p>
       </section>
 
@@ -396,7 +397,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
 
 <!-- 마이페이지 모달 -->
 <div id="mypage-modal" class="fixed inset-0 flex items-center justify-center overflow-y-auto bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 z-[1200]" role="dialog" aria-modal="true" aria-label="마이페이지">
-  <div class="bg-[#08081a] border-2 border-purple-500 shadow-[0_0_50px_rgba(168,85,247,0.3)] rounded-2xl p-8 max-w-md w-full relative transform scale-95 transition-transform duration-300" id="mypage-modal-content">
+  <div class="bg-[#08081a] border-2 border-purple-500 shadow-[0_0_50px_rgba(168,85,247,0.3)] rounded-2xl p-8 max-w-md w-full relative transform scale-95 transition-transform duration-300 max-h-[85vh] overflow-y-auto" id="mypage-modal-content">
     <button onclick="closeMyPage()" class="absolute top-4 right-4 text-gray-500 hover:text-white text-lg" aria-label="닫기">✕</button>
     <div class="text-center mb-5">
       <div class="text-3xl mb-2">👤</div>
@@ -443,7 +444,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
         </div>
         <div class="whitespace-nowrap">
           <h1 class="text-xl font-black tracking-widest text-white flex items-center gap-2">
-            SOUNDGLUCK <span class="text-cyan-500 font-light">|</span> PIANO TULZ <span class="text-[#ff007f] font-mono text-[10px] border border-pink-900 px-2 py-0.5 rounded">V9.35</span>
+            SOUNDGLUCK <span class="text-cyan-500 font-light">|</span> PIANO TULZ <span class="text-[#ff007f] font-mono text-[10px] border border-pink-900 px-2 py-0.5 rounded">V9.36</span>
           </h1>
           <p class="text-[10px] text-gray-500 font-mono text-left">Universal MIDI Keyboard & Performance Studio Module</p>
         </div>
