@@ -3,9 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOUNDGLUCK | PIANO TULZ v9.34</title>
+<title>SOUNDGLUCK | PIANO TULZ v9.35</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Music&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg-color:#03030b; --panel-bg:rgba(8,8,22,0.98);
@@ -22,7 +25,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
 
 /* 로그인 */
 #login-screen{display:flex;position:fixed;inset:0;background:radial-gradient(circle at center,#0a0a24 0%,#020207 100%);
-  z-index:1000;align-items:center;justify-content:center;padding:20px;}
+  z-index:1000;align-items:center;justify-content:center;padding:20px;overflow-y:auto;}
 .login-box{width:100%;max-width:380px;background:var(--panel-bg);border:1px solid rgba(0,243,255,0.25);
   border-radius:16px;padding:34px 28px;box-shadow:0 0 50px rgba(0,243,255,0.12);}
 .login-title{font-size:22px;font-weight:900;letter-spacing:0.05em;text-align:center;margin-bottom:6px;
@@ -37,7 +40,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
 
 /* 온보딩 */
 #onboarding-screen{display:none;position:fixed;inset:0;background:radial-gradient(circle at center,#090920 0%,#010105 100%);
-  z-index:900;align-items:center;justify-content:center;padding:20px;}
+  z-index:900;align-items:center;justify-content:center;padding:20px;overflow-y:auto;}
 .onb-box{width:100%;max-width:460px;background:var(--panel-bg);border:1px solid rgba(255,0,127,0.25);
   border-radius:16px;padding:32px 28px;text-align:center;}
 .onb-title{font-size:19px;font-weight:900;margin-bottom:18px;color:var(--neon-pink);text-shadow:0 0 12px rgba(255,0,127,0.4);}
@@ -124,7 +127,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
 .note-pal-chip{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
   width:50px;height:44px;border-radius:8px;border:1px solid #2a2a4a;background:#0d0d20;color:#c8c8e0;
   cursor:grab;transition:.15s;}
-.note-pal-chip .note-pal-glyph{font-size:19px;line-height:1;}
+.note-pal-chip .note-pal-glyph{font-size:19px;line-height:1;font-family:'Noto Music',sans-serif;}
 .note-pal-chip .note-pal-name{font-size:7px;font-weight:700;color:#7a7a9a;}
 .note-pal-chip.active{border-color:var(--neon-yellow);color:var(--neon-yellow);background:rgba(255,230,0,0.08);}
 .note-pal-chip.active .note-pal-name{color:var(--neon-yellow);}
@@ -132,7 +135,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
 .rest-pal-chip{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
   min-width:34px;height:38px;border:2px solid #2a2a4a;border-radius:8px;background:rgba(255,255,255,0.02);
   color:#c8c8e0;cursor:pointer;transition:.12s;}
-.rest-pal-chip .note-pal-glyph{font-size:17px;line-height:1;}
+.rest-pal-chip .note-pal-glyph{font-size:17px;line-height:1;font-family:'Noto Music',sans-serif;}
 .rest-pal-chip .note-pal-name{font-size:7px;font-weight:700;color:#7a7a9a;}
 .rest-pal-chip.active{border-color:var(--neon-orange);color:var(--neon-orange);background:rgba(255,140,0,0.08);}
 .rest-pal-chip.active .note-pal-name{color:var(--neon-orange);}
@@ -303,7 +306,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
 </div>
 
 <!-- 사운드글룩 공식채널 팝업 -->
-<div id="channel-modal" class="fixed inset-0 flex items-center justify-center bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 z-[1200]" role="dialog" aria-modal="true" aria-label="사운드글룩 공식채널">
+<div id="channel-modal" class="fixed inset-0 flex items-center justify-center overflow-y-auto bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 z-[1200]" role="dialog" aria-modal="true" aria-label="사운드글룩 공식채널">
   <div class="bg-[#08081a] border-2 border-cyan-500 shadow-[0_0_50px_rgba(0,243,255,0.3)] rounded-2xl p-8 max-w-md w-full relative transform scale-95 transition-transform duration-300" id="channel-modal-content">
     <button onclick="closeChannelModal()" class="absolute top-4 right-4 text-gray-500 hover:text-white text-lg" aria-label="닫기">✕</button>
     <div class="text-center mb-5">
@@ -392,7 +395,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
 </div>
 
 <!-- 마이페이지 모달 -->
-<div id="mypage-modal" class="fixed inset-0 flex items-center justify-center bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 z-[1200]" role="dialog" aria-modal="true" aria-label="마이페이지">
+<div id="mypage-modal" class="fixed inset-0 flex items-center justify-center overflow-y-auto bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 z-[1200]" role="dialog" aria-modal="true" aria-label="마이페이지">
   <div class="bg-[#08081a] border-2 border-purple-500 shadow-[0_0_50px_rgba(168,85,247,0.3)] rounded-2xl p-8 max-w-md w-full relative transform scale-95 transition-transform duration-300" id="mypage-modal-content">
     <button onclick="closeMyPage()" class="absolute top-4 right-4 text-gray-500 hover:text-white text-lg" aria-label="닫기">✕</button>
     <div class="text-center mb-5">
@@ -440,7 +443,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
         </div>
         <div class="whitespace-nowrap">
           <h1 class="text-xl font-black tracking-widest text-white flex items-center gap-2">
-            SOUNDGLUCK <span class="text-cyan-500 font-light">|</span> PIANO TULZ <span class="text-[#ff007f] font-mono text-[10px] border border-pink-900 px-2 py-0.5 rounded">V9.34</span>
+            SOUNDGLUCK <span class="text-cyan-500 font-light">|</span> PIANO TULZ <span class="text-[#ff007f] font-mono text-[10px] border border-pink-900 px-2 py-0.5 rounded">V9.35</span>
           </h1>
           <p class="text-[10px] text-gray-500 font-mono text-left">Universal MIDI Keyboard & Performance Studio Module</p>
         </div>
@@ -1477,6 +1480,10 @@ function initNoteChordControls(){
 function initHelpTooltips(){
   const tip = document.getElementById('app-tooltip');
   if(!tip) return;
+  // 터치 전용 기기는 '호버' 개념이 없어서 (1) mouseover가 탭을 대신 소비해 첫 터치가 씹히는 문제,
+  // (2) 손을 떼도 mouseout이 발생하지 않아 툴팁이 화면에 계속 떠있는 문제가 생김 → 터치 기기에서는 호버 툴팁 자체를 끔.
+  const isTouchPrimary = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  if(isTouchPrimary) return;
   let activeEl = null;
   document.addEventListener('mouseover', (e)=>{
     const el = e.target.closest('[data-help]');
@@ -1804,6 +1811,7 @@ document.querySelectorAll('.nav-tab').forEach(tab=>{
     tab.setAttribute('aria-selected','true');
     TAB_KEYS.forEach(k=> document.getElementById('content-'+k).classList.toggle('hidden', tab.dataset.tab!==k));
     stopAllMetronomes(); // 탭 전환 시 다른 모드의 메트로놈이 백그라운드에서 계속 울리는 문제 방지
+    if(typeof stopRhythm==='function') stopRhythm(); // 퍼포먼스 모드 리듬 재생이 탭 전환 후에도 계속 남는 문제 방지
     if(typeof stopChordAccompaniment==='function') stopChordAccompaniment(); // 코드반주 잔여 재생도 함께 정지(퍼포먼스 FFT 연동 버그 방지)
     if(typeof stopChordPracticeMode==='function' && chordPracticeMode) stopChordPracticeMode(); // 연습모드 중 탭 전환 시 가이드 라이트/상태 정리
     if(typeof stopScore==='function') stopScore(); // 스코어노트 재생 중 다른 탭으로 전환 시 정지
@@ -3480,8 +3488,8 @@ function renderSightScore(notes, svgId){
     add('line', {x1:10, y1:TREBLE_BOTTOM_Y-i*LINE_GAP, x2:lineWidth-10, y2:TREBLE_BOTTOM_Y-i*LINE_GAP, stroke:'#8a8aa5', 'stroke-width':1});
     add('line', {x1:10, y1:BASS_BOTTOM_Y-i*LINE_GAP, x2:lineWidth-10, y2:BASS_BOTTOM_Y-i*LINE_GAP, stroke:'#8a8aa5', 'stroke-width':1});
   }
-  add('text', {x:14, y:TREBLE_BOTTOM_Y-16, 'font-size':40, fill:'#00f3ff'}).textContent='𝄞';
-  add('text', {x:16, y:BASS_BOTTOM_Y-10, 'font-size':32, fill:'#ff007f'}).textContent='𝄢';
+  add('text', {x:14, y:TREBLE_BOTTOM_Y-16, 'font-size':40, fill:'#00f3ff', 'font-family':"'Noto Music',sans-serif"}).textContent='𝄞';
+  add('text', {x:16, y:BASS_BOTTOM_Y-10, 'font-size':32, fill:'#ff007f', 'font-family':"'Noto Music',sans-serif"}).textContent='𝄢';
 
   const beatsPerM = 4;
   for(let b=0; b<=maxBeat+0.001; b+=beatsPerM){
@@ -3500,7 +3508,7 @@ function renderSightScore(notes, svgId){
       const ref = clef==='treble'?TREBLE_REF:BASS_REF;
       const y = diatonicToY(ref+4, clef);
       const glyph = REST_GLYPH[base] || '𝄽';
-      add('text', {x:x-6, y:y+6, 'font-size':20, fill:'#c8c8e0','data-sight-index':idx, class:'sight-note-head'}).textContent = glyph;
+      add('text', {x:x-6, y:y+6, 'font-size':20, fill:'#c8c8e0','data-sight-index':idx, class:'sight-note-head', 'font-family':"'Noto Music',sans-serif"}).textContent = glyph;
       if(dotted) add('circle',{cx:x+15, cy:y-4, r:1.8, fill:'#ffe600'});
       return;
     }
@@ -4127,8 +4135,8 @@ function renderScore(){
       add('line', {x1:10, y1:yOff+TREBLE_BOTTOM_Y-i*LINE_GAP, x2:lineWidth-10, y2:yOff+TREBLE_BOTTOM_Y-i*LINE_GAP, stroke:'#8a8aa5', 'stroke-width':1});
       add('line', {x1:10, y1:yOff+BASS_BOTTOM_Y-i*LINE_GAP, x2:lineWidth-10, y2:yOff+BASS_BOTTOM_Y-i*LINE_GAP, stroke:'#8a8aa5', 'stroke-width':1});
     }
-    add('text', {x:14, y:yOff+TREBLE_BOTTOM_Y-16, 'font-size':40, fill:'#00f3ff'}).textContent='𝄞';
-    add('text', {x:16, y:yOff+BASS_BOTTOM_Y-10, 'font-size':32, fill:'#ff007f'}).textContent='𝄢';
+    add('text', {x:14, y:yOff+TREBLE_BOTTOM_Y-16, 'font-size':40, fill:'#00f3ff', 'font-family':"'Noto Music',sans-serif"}).textContent='𝄞';
+    add('text', {x:16, y:yOff+BASS_BOTTOM_Y-10, 'font-size':32, fill:'#ff007f', 'font-family':"'Noto Music',sans-serif"}).textContent='𝄢';
 
     // 마디선 (박자 기준, 해당 줄 구간만)
     for(let b=lineStartBeat; b<=lineEndBeat+0.001; b+=beatsPerM){
@@ -4166,7 +4174,7 @@ function renderScore(){
         const ref = clef==='treble'?TREBLE_REF:BASS_REF;
         const y = yOff + diatonicToY(ref+4, clef);
         const glyph = REST_GLYPH[base] || '𝄽';
-        add('text', {x:x-6, y:y+6, 'font-size':20, fill:'#c8c8e0', 'data-note-index':idx, class:'score-note-head'}).textContent = glyph;
+        add('text', {x:x-6, y:y+6, 'font-size':20, fill:'#c8c8e0', 'data-note-index':idx, class:'score-note-head', 'font-family':"'Noto Music',sans-serif"}).textContent = glyph;
         if(dotted) add('circle',{cx:x+15, cy:y-4, r:1.8, fill:'#ffe600'});
         return;
       }
