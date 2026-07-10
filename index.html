@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOUNDGLUCK | PIANO TULZ v9.37</title>
+<title>SOUNDGLUCK | PIANO TULZ v9.38</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -230,7 +230,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
     </div>
 
     <h2 class="text-2xl font-black tracking-widest text-white mb-2 uppercase whitespace-nowrap">SOUNDGLUCK &nbsp;|&nbsp; PIANO TULZ</h2>
-    <p class="text-[11px] text-[#ff007f] font-mono tracking-wider uppercase mb-8">l &nbsp; Piano Tulz v9.27</p>
+    <p class="text-[11px] text-[#ff007f] font-mono tracking-wider uppercase mb-8">l &nbsp; Piano Tulz v9.38</p>
 
     <form id="login-form" class="space-y-6">
       <div class="text-left">
@@ -331,7 +331,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
      이 가이드도 반드시 함께 업데이트할 것 (선생님이 학생에게 설명하듯 친절하고 구체적으로:
      "무엇을 위한 기능인지 / 어떻게 쓰는지 / 무엇에 도움이 되는지" 세 가지를 항상 포함) -->
 <div id="guide-modal" class="fixed inset-0 flex items-center justify-center bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 z-[1200]" role="dialog" aria-modal="true" aria-label="이용가이드">
-  <div class="bg-[#08081a] border-2 border-teal-500 shadow-[0_0_50px_rgba(20,184,166,0.3)] rounded-2xl p-8 max-w-3xl w-full relative transform scale-95 transition-transform duration-300" id="guide-modal-content" style="max-height:85vh;overflow-y:auto;">
+  <div class="bg-[#08081a] border-2 border-teal-500 shadow-[0_0_50px_rgba(20,184,166,0.3)] rounded-2xl p-8 max-w-5xl w-full relative transform scale-95 transition-transform duration-300" id="guide-modal-content" style="max-height:85vh;overflow-y:auto;">
     <button onclick="closeGuideModal()" class="sticky top-0 float-right text-gray-500 hover:text-white text-lg bg-[#08081a] px-2" aria-label="닫기">✕</button>
     <div class="text-center mb-6">
       <div class="text-3xl mb-2">📖</div>
@@ -339,8 +339,8 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
       <div class="text-[11px] text-gray-500 mt-1">피아노 선생님이 옆에서 설명해드리듯, 하나씩 차근차근 안내합니다.</div>
     </div>
 
-    <div class="space-y-6 text-[13px] text-gray-300 leading-relaxed">
-      <section>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 text-[13px] text-gray-300 leading-relaxed">
+      <section class="bg-black/40 border-2 border-cyan-500/20 rounded-xl p-5 space-y-3">
         <h3 class="text-sm font-black text-cyan-400 mb-1.5"><i class="fa-solid fa-play mr-1.5"></i>시작하기 전에</h3>
         <p>이 앱은 <b>USB MIDI 건반</b>이 있으면 자동으로 인식해서 실제 건반처럼 연주할 수 있고, 건반이 없어도 <b>컴퓨터 키보드(QWERTY)</b>나 <b>마우스 클릭</b>만으로도 똑같이 연주할 수 있습니다. QWERTY 키보드에서는 A키가 지금 옥타브의 '도'가 되고, Z/X 키로 옥타브를 아래/위로 옮길 수 있어요. 헤더의 로고(SOUNDGLUCK | PIANO TULZ)를 누르면 언제든 <b>퍼포먼스 모드(첫 화면)</b>로 돌아옵니다.</p>
         <p><b>브라우저 안내:</b> 이 앱은 <b>구글 크롬(Chrome)</b>과 <b>윈도우 엣지(Edge)</b>에 최적화되어 있습니다. 로그인 후 건반 연결 확인 화면에서 안내되며, 그 외 브라우저는 건반 인식이 어려울 수 있습니다.</p>
@@ -348,48 +348,47 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
         <p><b>건반 연결이 안 될 때:</b> "연결상태 확인" 버튼을 누르면 성공/실패 여부가 바로 표시됩니다. 인식이 안 된다면 ①USB 케이블이 PC와 건반 양쪽에 제대로 꽂혀 있는지, ②제품이 USB MIDI 출력을 지원하는 모델인지 확인해보세요. 건반이 없어도 "바로 시작하기"로 QWERTY/마우스 연주가 가능합니다.</p>
       </section>
 
-      <section>
-        <h3 class="text-sm font-black text-cyan-400 mb-1.5"><i class="fa-solid fa-sliders mr-1.5"></i>퍼포먼스 모드</h3>
+      <section class="bg-black/40 border-2 border-purple-500/20 rounded-xl p-5 space-y-3">
+        <h3 class="text-sm font-black text-purple-400 mb-1.5"><i class="fa-solid fa-sliders mr-1.5"></i>퍼포먼스 모드</h3>
         <p><b>무엇을 위한 기능인가요?</b> 25가지 악기 음색(그랜드피아노, 일렉트릭피아노, 스트링, 브라스, 벨 등)과 디스토션·EQ·코러스·딜레이·리버브·컴프레서 같은 이펙트를 자유롭게 조합해서 소리를 만들어보는 공간입니다.</p>
         <p><b>어떻게 사용하나요?</b> 위쪽에서 음색을 고르고, FX 랙의 손잡이(노브)를 조절한 뒤 건반을 눌러 소리를 확인하세요. 마음에 드는 조합을 찾았다면 "셋업 저장하기"로 저장해두고 나중에 그대로 불러올 수 있습니다.</p>
         <p><b>무엇에 도움이 되나요?</b> 같은 멜로디를 여러 음색으로 쳐보면 귀가 트이고, 나중에 자기만의 연주 스타일(질감)을 찾는 데 큰 도움이 됩니다.</p>
       </section>
 
-      <section>
-        <h3 class="text-sm font-black text-cyan-400 mb-1.5"><i class="fa-solid fa-graduation-cap mr-1.5"></i>EDU 모드</h3>
+      <section class="bg-black/40 border-2 border-green-500/20 rounded-xl p-5 space-y-3">
+        <h3 class="text-sm font-black text-green-400 mb-1.5"><i class="fa-solid fa-graduation-cap mr-1.5"></i>EDU 모드</h3>
         <p><b>무엇을 위한 기능인가요?</b> 실제 피아노 학원에서 쓰는 커리큘럼 순서(입문 → 하농 → 바이엘 → 체르니 → 소나티네 → 부르크뮐러)를 그대로 옮겨온 정식 연습 공간입니다. 여기에 스케일·아르페지오 전문 연습, 화성 연습(코드 진행 감각), 리듬 훈련, 그리고 <b>청음(귀로 듣고 맞히기)</b> 훈련까지 들어있습니다.</p>
         <p><b>어떻게 사용하나요?</b> 위의 카테고리 칩에서 원하는 교재를 고르고 곡을 선택한 뒤 "시작"을 누르면 낙하하는 노트를 보며 연습할 수 있습니다. 스케일·아르페지오는 12개 조성 × 4종류를 그 자리에서 만들어주고, 청음 카테고리는 소리를 듣고 객관식으로 맞히거나(음정/코드) 건반으로 그대로 쳐서 맞히는(멜로디 받아쓰기) 퀴즈 방식입니다.</p>
         <p><b>무엇에 도움이 되나요?</b> "손으로 치는 훈련"과 "귀로 듣는 훈련"을 둘 다 갖춰야 진짜 실력이 됩니다. 정식 교재 순서를 따라가면 독학이어도 체계적으로 실력이 쌓입니다.</p>
-      
         <p><b>초견(Sight Reading):</b> 처음 보는 짧은 악보를 미리 연습하지 않고 정해진 빠르기에 맞춰 바로 한 번에 연주해보는 카테고리입니다. 카운트인 후 재생 위치가 지나가는 동안 직접 쳐서 정확도를 채점받습니다. 초견 능력은 실제 연주 실력과 별개로 꾸준히 훈련해야 느는 능력이에요.</p>
       </section>
 
-      <section>
-        <h3 class="text-sm font-black text-cyan-400 mb-1.5"><i class="fa-solid fa-gamepad mr-1.5"></i>게임 모드</h3>
+      <section class="bg-black/40 border-2 border-yellow-500/20 rounded-xl p-5 space-y-3">
+        <h3 class="text-sm font-black text-yellow-400 mb-1.5"><i class="fa-solid fa-gamepad mr-1.5"></i>게임 모드</h3>
         <p><b>무엇을 위한 기능인가요?</b> 118곡 이상의 다양한 장르(동요/클래식/캐롤/오케스트라/K-pop/J-pop/시네마 등)를 리듬게임처럼 재미있게 연습하는 공간입니다.</p>
-        <p><b>어떻게 사용하나요?</b> 카테고리와 곡을 고르고, 오른손/왼손/양손 중 연습할 손을 선택한 뒤 "시작"을 누르세요. 노트가 건반 라인에 닿는 순간 눌러서 판정을 받고, 콤보를 이어가며 점수를 쌓습니다. 도중에 "일시정지"로 멈췄다가 이어할 수 있고, "정지"를 누르면 처음부터 다시 시작됩니다.</p>
+        <p><b>어떻게 사용하나요?</b> 카테고리와 곡을 고르고, 오른손/왼손/양손 중 연습할 손을 선택한 뒤 "시작"을 누르세요. 시작을 누르면 짧은 카운트다운 후 노트가 떨어지기 시작합니다. 노트가 건반 라인에 닿는 순간 눌러서 판정을 받고, 콤보를 이어가며 점수를 쌓습니다. 도중에 "일시정지"로 멈췄다가 이어할 수 있고, "정지"를 누르면 처음부터 다시 시작됩니다.</p>
         <p><b>무엇에 도움이 되나요?</b> 게임처럼 반복하다 보면 자연스럽게 곡을 외우게 되고, 정확한 타이밍에 맞춰 치는 리듬 감각이 늘어납니다.</p>
       </section>
 
-      <section>
-        <h3 class="text-sm font-black text-cyan-400 mb-1.5"><i class="fa-solid fa-music mr-1.5"></i>코드 반주법</h3>
+      <section class="bg-black/40 border-2 border-pink-500/20 rounded-xl p-5 space-y-3">
+        <h3 class="text-sm font-black text-pink-400 mb-1.5"><i class="fa-solid fa-music mr-1.5"></i>코드 반주법</h3>
         <p><b>무엇을 위한 기능인가요?</b> 멜로디 없이도 코드(화음)만으로 반주하는 법을 배우는 공간입니다. 자동재생 데모, 눌러야 할 건반을 알려주는 연습 모드, 그리고 실제 곡의 코드 진행을 처음부터 끝까지 완주하는 모드까지 있습니다.</p>
         <p><b>어떻게 사용하나요?</b> KEY(조성)를 고르면 그 조성에 맞는 7개 코드가 자동으로 나옵니다. 보이싱(Block/Arpeggio/Walking Bass)으로 반주 스타일을 바꿔보세요. 연습 모드를 켜면 건반에 코드 자리가 표시되고, 그대로 누르면 정답 확인이 됩니다. 코드진행 완주 모드는 이론 패턴·CCM/워십·공개영역 명곡 중 골라서 한 곡을 처음부터 끝까지 코드로 연주해볼 수 있습니다.</p>
         <p><b>무엇에 도움이 되나요?</b> 코드 반주는 밴드/찬양/작곡·즉흥연주의 기본기입니다. 코드 이름과 손 모양을 몸에 익히면 어떤 노래든 반주할 수 있게 됩니다.</p>
       </section>
 
-      <section>
-        <h3 class="text-sm font-black text-cyan-400 mb-1.5"><i class="fa-solid fa-file-music mr-1.5"></i>A.I 스코어 노트</h3>
+      <section class="bg-black/40 border-2 border-orange-500/20 rounded-xl p-5 space-y-3">
+        <h3 class="text-sm font-black text-orange-400 mb-1.5"><i class="fa-solid fa-file-music mr-1.5"></i>A.I 스코어 노트</h3>
         <p><b>무엇을 위한 기능인가요?</b> 건반으로 연주한 음을 실시간으로 정식 오선보(높은음자리/낮은음자리) 악보에 자동으로 받아 적어주는 채보 기능입니다. ("A.I"라고 되어 있지만 인공지능 분석이 아니라, 연주한 음의 길이를 표준 음가로 자동 정리해주는 스마트 채보기입니다.)</p>
         <p><b>어떻게 사용하나요?</b> 채보 버튼을 켜둔 상태로 건반을 연주하면 그대로 오선지에 그려집니다. 음표 팔레트에서 원하는 음가를 골라 오선지에 직접 클릭/드래그로 추가할 수도 있고, 클릭하면 지워집니다. 위쪽 제목/작곡가 입력란에 이름을 적으면 악보 위에 표시되고, PNG·MIDI로 내보낼 때 파일 이름과 악보 이미지에도 그대로 반영됩니다. 완성되면 재생 버튼으로 처음부터 다시 들어보거나, PNG/MIDI 파일로 내보낼 수 있습니다.</p>
         <p><b>무엇에 도움이 되나요?</b> 즉흥연주나 작곡 아이디어를 그 자리에서 악보로 남길 수 있어 편곡·작곡 공부에 좋고, 자신이 친 리듬이 실제로 어떤 음가인지 눈으로 확인하며 배울 수 있습니다.</p>
       </section>
 
-      <section>
-        <h3 class="text-sm font-black text-cyan-400 mb-1.5"><i class="fa-solid fa-star mr-1.5"></i>모든 모드 공통 기능</h3>
+      <section class="bg-black/40 border-2 border-teal-500/20 rounded-xl p-5 space-y-3">
+        <h3 class="text-sm font-black text-teal-400 mb-1.5"><i class="fa-solid fa-star mr-1.5"></i>모든 모드 공통 기능</h3>
         <p><b>계이름/코드 표시:</b> 건반 위에 음이름을 표시하거나, 2개 이상 동시에 누르면 어떤 코드인지 배지로 알려줍니다. 화음의 이름을 아직 외우지 못했을 때 특히 유용합니다.</p>
         <p><b>메트로놈:</b> 각 모드마다 독립적인 메트로놈이 있어 원하는 템포로 박자를 맞추며 연습할 수 있습니다.</p>
-        <p><b>마이페이지:</b> 닉네임과 비밀번호를 직접 바꾸고, 모드별로 오늘/누적 얼마나 연습했는지 확인할 수 있습니다. 구글 계정으로 로그인하면 이 기록과 나만의 셋업이 클라우드에 저장되어 다른 기기에서도 이어집니다.</p>
+        <p><b>마이페이지:</b> 닉네임과 비밀번호를 직접 바꾸고, 모드별로 오늘/누적 얼마나 연습했는지 확인할 수 있고, 최근 14일간의 연습시간 추이도 그래프로 볼 수 있습니다. 구글 계정으로 로그인하면 이 기록과 나만의 셋업이 클라우드에 저장되어 다른 기기에서도 이어집니다.</p>
       </section>
     </div>
   </div>
@@ -429,6 +428,10 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
         <div class="text-[11px] text-gray-500">불러오는 중...</div>
       </div>
     </div>
+    <div class="mb-3">
+      <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest block mb-2">최근 14일 연습시간 추이</span>
+      <div id="mypage-trend-chart" class="flex items-end gap-[3px] h-20 bg-black/30 border border-gray-800 rounded-lg p-2"></div>
+    </div>
     <div id="mypage-cloud-notice" class="text-[10px] text-yellow-500 mt-3 hidden">⚠️ 개발용 로컬 계정은 클라우드 기록/닉네임 변경이 연동되지 않습니다.</div>
   </div>
 </div>
@@ -444,7 +447,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
         </div>
         <div class="whitespace-nowrap">
           <h1 class="text-xl font-black tracking-widest text-white flex items-center gap-2">
-            SOUNDGLUCK <span class="text-cyan-500 font-light">|</span> PIANO TULZ <span class="text-[#ff007f] font-mono text-[10px] border border-pink-900 px-2 py-0.5 rounded">V9.37</span>
+            SOUNDGLUCK <span class="text-cyan-500 font-light">|</span> PIANO TULZ <span class="text-[#ff007f] font-mono text-[10px] border border-pink-900 px-2 py-0.5 rounded">V9.38</span>
           </h1>
           <p class="text-[10px] text-gray-500 font-mono text-left">Universal MIDI Keyboard & Performance Studio Module</p>
         </div>
@@ -936,8 +939,11 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
         </div>
       </div>
 
-      <div id="gameCanvasWrap" style="overflow-x:auto;">
+      <div id="gameCanvasWrap" style="overflow-x:auto;position:relative;">
         <canvas id="gameCanvas" height="420"></canvas>
+        <div id="game-count-in-overlay" class="hidden" style="position:absolute;inset:0;display:none;align-items:center;justify-content:center;pointer-events:none;z-index:20;">
+          <div id="game-count-in-text" style="font-size:5rem;font-weight:900;color:#00f3ff;text-shadow:0 0 30px rgba(0,243,255,0.8);"></div>
+        </div>
       </div>
     </div>
     <div id="content-edu" class="hidden flex flex-col gap-4" role="tabpanel" aria-labelledby="tab-edu">
@@ -1833,6 +1839,7 @@ document.querySelectorAll('.nav-tab').forEach(tab=>{
     if(typeof stopChordPracticeMode==='function' && chordPracticeMode) stopChordPracticeMode(); // 연습모드 중 탭 전환 시 가이드 라이트/상태 정리
     if(typeof stopScore==='function') stopScore(); // 스코어노트 재생 중 다른 탭으로 전환 시 정지
     if(typeof stopSightReading==='function') stopSightReading(); // 초견 진행 중 다른 탭으로 전환 시 정지
+    if(typeof cancelGameCountIn==='function') cancelGameCountIn(); // 카운트인 진행 중 다른 탭으로 전환 시 취소(백그라운드에서 게임이 시작되는 것 방지)
     if(tab.dataset.tab==='score' && typeof renderScore==='function') renderScore();
   });
 });
@@ -1846,21 +1853,50 @@ function openMyPage(){
   modal.classList.remove('pointer-events-none','opacity-0');
   document.getElementById('mypage-modal-content').classList.remove('scale-95');
 
+  const trendChartEl = document.getElementById('mypage-trend-chart');
   if(!loggedInUser.isCloud){
     statsList.innerHTML = '<div class="text-[11px] text-gray-500">개발용 로컬 계정은 기록이 없습니다.</div>';
+    if(trendChartEl) trendChartEl.innerHTML = '<div class="text-[11px] text-gray-500 self-center">개발용 로컬 계정은 기록이 없습니다.</div>';
     return;
   }
   statsList.innerHTML = '<div class="text-[11px] text-gray-500">불러오는 중...</div>';
+  if(trendChartEl) trendChartEl.innerHTML = '<div class="text-[11px] text-gray-500 self-center">불러오는 중...</div>';
   const MODE_LABELS = {chord:'코드 반주법', perf:'퍼포먼스 모드', score:'A.I 스코어노트', game:'게임 모드', edu:'EDU 모드'};
   callAppsScript('getHistory', { id: loggedInUser.id, pw: loggedInUser.pw }).then(r=>{
-    if(!r.success){ statsList.innerHTML = '<div class="text-[11px] text-red-400">'+(r.message||'불러오기 실패')+'</div>'; return; }
+    if(!r.success){
+      statsList.innerHTML = '<div class="text-[11px] text-red-400">'+(r.message||'불러오기 실패')+'</div>';
+      if(trendChartEl) trendChartEl.innerHTML = '';
+      return;
+    }
     const totals = r.totalsByMode || {};
     const rows = Object.keys(MODE_LABELS).map(k=>{
       const min = totals[k] || 0;
       return `<div class="flex justify-between border-b border-gray-800 pb-1"><span>${MODE_LABELS[k]}</span><span class="text-purple-300 font-bold">${min.toFixed(1)}분</span></div>`;
     }).join('');
     statsList.innerHTML = rows;
+    renderMyPageTrendChart(r.dailyTotals || {});
   });
+}
+// 최근 14일간의 날짜별 연습시간(분)을 막대그래프로 그려서 연습 추이를 한눈에 볼 수 있게 함
+function renderMyPageTrendChart(dailyTotals){
+  const chartEl = document.getElementById('mypage-trend-chart');
+  if(!chartEl) return;
+  const days = [];
+  const now = new Date();
+  for(let i=13; i>=0; i--){
+    const d = new Date(now);
+    d.setDate(d.getDate() - i);
+    const key = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+    days.push({ key, label: (d.getMonth()+1)+'/'+d.getDate(), minutes: dailyTotals[key] || 0 });
+  }
+  const maxMinutes = Math.max(1, ...days.map(d=>d.minutes));
+  chartEl.innerHTML = days.map(d=>{
+    const pct = Math.max(3, Math.round((d.minutes/maxMinutes)*100));
+    const title = d.label + ' : ' + d.minutes.toFixed(1) + '분';
+    return `<div class="flex-1 flex flex-col items-center justify-end h-full" title="${title}">
+      <div class="w-full rounded-t-sm ${d.minutes>0 ? 'bg-purple-500' : 'bg-gray-800'}" style="height:${pct}%;"></div>
+    </div>`;
+  }).join('');
 }
 function closeMyPage(){
   const modal = document.getElementById('mypage-modal');
@@ -2802,6 +2838,7 @@ function playSong(songArray, handMode, beatMs, ui, timeSig, keepScore){
 
 function startGame(){ playSong(GAME_SONGS[currentGameSong].song, gameHandMode, 500, {canvas:'gameCanvas', score:'gameScore', combo:'gameCombo', judgment:'gameJudgment'}, 4); }
 function stopGame(){
+  cancelGameCountIn();
   gameActive=false;
   gamePaused=false;
   if(gameLoopTimeout){ clearTimeout(gameLoopTimeout); gameLoopTimeout=null; }
@@ -2845,7 +2882,56 @@ function updateGamePauseButtons(){
   });
 }
 
-document.getElementById('btnGameStart').addEventListener('click', startGame);
+// ---- 게임모드 시작 카운트인(3-2-1-GO) ----
+// 시작 버튼을 누르면 곧바로 노트가 쏟아지지 않고, 화면 중앙에 큰 숫자로 3-2-1-GO를 보여준 뒤에
+// 실제 재생(startGame)을 시작한다. 자동 반복재생(같은 곡을 계속 이어서 재생)이나 EDU 모드 재생에는
+// 영향을 주지 않도록, 오직 "시작" 버튼 클릭 경로에만 적용한다.
+let gameCountInActive = false;
+let gameCountInTimeouts = [];
+function cancelGameCountIn(){
+  gameCountInTimeouts.forEach(id=>clearTimeout(id));
+  gameCountInTimeouts = [];
+  gameCountInActive = false;
+  const overlay = document.getElementById('game-count-in-overlay');
+  if(overlay){ overlay.style.display = 'none'; }
+  const startBtn = document.getElementById('btnGameStart');
+  if(startBtn) startBtn.disabled = false;
+}
+function runGameCountIn(onComplete){
+  const overlay = document.getElementById('game-count-in-overlay');
+  const textEl = document.getElementById('game-count-in-text');
+  if(!overlay || !textEl){ onComplete(); return; }
+  gameCountInActive = true;
+  overlay.style.display = 'flex';
+  const startBtn = document.getElementById('btnGameStart');
+  if(startBtn) startBtn.disabled = true;
+  const steps = ['3','2','1','GO!'];
+  const stepMs = 700;
+  steps.forEach((label, i)=>{
+    const id = setTimeout(()=>{
+      textEl.textContent = label;
+      textEl.style.animation = 'none';
+      void textEl.offsetWidth; // 리플로우를 강제해서 애니메이션을 매번 다시 재생
+      textEl.style.animation = 'judgeFxPop 0.5s ease-out';
+      if(label === 'GO!' && audioCtx.state==='suspended') audioCtx.resume();
+    }, i*stepMs);
+    gameCountInTimeouts.push(id);
+  });
+  const doneId = setTimeout(()=>{
+    overlay.style.display = 'none';
+    gameCountInActive = false;
+    if(startBtn) startBtn.disabled = false;
+    onComplete();
+  }, steps.length*stepMs);
+  gameCountInTimeouts.push(doneId);
+}
+function handleGameStartClick(){
+  if(gameCountInActive) return;
+  cancelGameCountIn();
+  runGameCountIn(startGame);
+}
+
+document.getElementById('btnGameStart').addEventListener('click', handleGameStartClick);
 document.getElementById('btnGamePause').addEventListener('click', toggleGamePause);
 document.getElementById('btnGameStop').addEventListener('click', stopGame);
 
