@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOUNDGLUCK | PIANO TULZ v9.39</title>
+<title>SOUNDGLUCK | PIANO TULZ v9.40</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -230,7 +230,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
     </div>
 
     <h2 class="text-2xl font-black tracking-widest text-white mb-2 uppercase whitespace-nowrap">SOUNDGLUCK &nbsp;|&nbsp; PIANO TULZ</h2>
-    <p class="text-[11px] text-[#ff007f] font-mono tracking-wider uppercase mb-8">l &nbsp; Piano Tulz v9.39</p>
+    <p class="text-[11px] text-[#ff007f] font-mono tracking-wider uppercase mb-8">l &nbsp; Piano Tulz v9.40</p>
 
     <form id="login-form" class="space-y-6">
       <div class="text-left">
@@ -447,7 +447,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
         </div>
         <div class="whitespace-nowrap">
           <h1 class="text-xl font-black tracking-widest text-white flex items-center gap-2">
-            SOUNDGLUCK <span class="text-cyan-500 font-light">|</span> PIANO TULZ <span class="text-[#ff007f] font-mono text-[10px] border border-pink-900 px-2 py-0.5 rounded">V9.39</span>
+            SOUNDGLUCK <span class="text-cyan-500 font-light">|</span> PIANO TULZ <span class="text-[#ff007f] font-mono text-[10px] border border-pink-900 px-2 py-0.5 rounded">V9.40</span>
           </h1>
           <p class="text-[10px] text-gray-500 font-mono text-left">Universal MIDI Keyboard & Performance Studio Module</p>
         </div>
@@ -772,6 +772,10 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
               </div>
             </div>
           </div>
+
+          <button onclick="resetFxRack()" class="py-1.5 bg-slate-900/60 hover:bg-slate-800 border border-slate-700 text-[11px] text-slate-300 font-bold rounded-lg transition flex items-center justify-center gap-1.5" data-help="FX 랙(Drive/EQ/Chorus/Phaser/Delay/Reverb/Compressor/Width/Master)을 의도된 기본값으로 되돌립니다." data-tip="음색/리듬/BPM은 그대로 두고 이펙트만 초기화합니다.">
+            <i class="fa-solid fa-rotate-left"></i> FX 초기화
+          </button>
 
           <span class="text-xs font-black text-cyan-400 tracking-widest flex items-center gap-1 mt-1">
             <i class="fa-solid fa-cloud"></i> 퍼포먼스 셋업 저장/불러오기
@@ -2582,6 +2586,17 @@ function applySetup(setup){
       if(el){ el.value = setup.fx[k]; el.dispatchEvent(new Event('input')); }
     });
   }
+}
+// FX 랙만 의도된 기본값(DEFAULT_SETUP.fx)으로 되돌림. 음색/리듬/BPM은 건드리지 않음.
+// 각 fx-* 슬라이더가 이미 가지고 있는 input 이벤트 리스너를 그대로 재사용해서
+// 오디오 노드 값과 화면 라벨을 한 번에 정확히 갱신한다(값 설정 로직 중복 없음).
+function resetFxRack(){
+  Object.keys(DEFAULT_SETUP.fx).forEach(k=>{
+    const el = document.getElementById('fx-'+k);
+    if(el){ el.value = DEFAULT_SETUP.fx[k]; el.dispatchEvent(new Event('input')); }
+  });
+  const statusEl = document.getElementById('setupStatus');
+  if(statusEl){ statusEl.innerText = 'FX 초기화 완료 ✅'; setTimeout(()=>statusEl.innerText='', 2500); }
 }
 async function exportSetup(){
   const setup = collectSetup();
