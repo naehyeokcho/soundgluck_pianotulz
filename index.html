@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOUNDGLUCK | PIANO TULZ v9.38</title>
+<title>SOUNDGLUCK | PIANO TULZ v9.39</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -230,7 +230,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
     </div>
 
     <h2 class="text-2xl font-black tracking-widest text-white mb-2 uppercase whitespace-nowrap">SOUNDGLUCK &nbsp;|&nbsp; PIANO TULZ</h2>
-    <p class="text-[11px] text-[#ff007f] font-mono tracking-wider uppercase mb-8">l &nbsp; Piano Tulz v9.38</p>
+    <p class="text-[11px] text-[#ff007f] font-mono tracking-wider uppercase mb-8">l &nbsp; Piano Tulz v9.39</p>
 
     <form id="login-form" class="space-y-6">
       <div class="text-left">
@@ -350,7 +350,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
 
       <section class="bg-black/40 border-2 border-purple-500/20 rounded-xl p-5 space-y-3">
         <h3 class="text-sm font-black text-purple-400 mb-1.5"><i class="fa-solid fa-sliders mr-1.5"></i>퍼포먼스 모드</h3>
-        <p><b>무엇을 위한 기능인가요?</b> 25가지 악기 음색(그랜드피아노, 일렉트릭피아노, 스트링, 브라스, 벨 등)과 디스토션·EQ·코러스·딜레이·리버브·컴프레서 같은 이펙트를 자유롭게 조합해서 소리를 만들어보는 공간입니다.</p>
+        <p><b>무엇을 위한 기능인가요?</b> 28가지 악기 음색(그랜드피아노·업라이트·콘서트그랜드·소프트펠트 등 피아노 계열 6종을 포함해 일렉트릭피아노, 스트링, 브라스, 벨 등)과 디스토션·EQ·코러스·딜레이·리버브·컴프레서 같은 이펙트를 자유롭게 조합해서 소리를 만들어보는 공간입니다.</p>
         <p><b>어떻게 사용하나요?</b> 위쪽에서 음색을 고르고, FX 랙의 손잡이(노브)를 조절한 뒤 건반을 눌러 소리를 확인하세요. 마음에 드는 조합을 찾았다면 "셋업 저장하기"로 저장해두고 나중에 그대로 불러올 수 있습니다.</p>
         <p><b>무엇에 도움이 되나요?</b> 같은 멜로디를 여러 음색으로 쳐보면 귀가 트이고, 나중에 자기만의 연주 스타일(질감)을 찾는 데 큰 도움이 됩니다.</p>
       </section>
@@ -447,7 +447,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
         </div>
         <div class="whitespace-nowrap">
           <h1 class="text-xl font-black tracking-widest text-white flex items-center gap-2">
-            SOUNDGLUCK <span class="text-cyan-500 font-light">|</span> PIANO TULZ <span class="text-[#ff007f] font-mono text-[10px] border border-pink-900 px-2 py-0.5 rounded">V9.38</span>
+            SOUNDGLUCK <span class="text-cyan-500 font-light">|</span> PIANO TULZ <span class="text-[#ff007f] font-mono text-[10px] border border-pink-900 px-2 py-0.5 rounded">V9.39</span>
           </h1>
           <p class="text-[10px] text-gray-500 font-mono text-left">Universal MIDI Keyboard & Performance Studio Module</p>
         </div>
@@ -475,7 +475,7 @@ body{background:var(--bg-color);color:#fff;font-family:'Segoe UI',Roboto,-apple-
 
     <nav class="flex flex-wrap gap-1.5 bg-black/60 p-1.5 rounded-xl border border-gray-800 w-full justify-center" role="tablist" aria-label="모드 선택">
       <button data-tab="perf" id="tab-perf" role="tab" aria-selected="true" aria-controls="content-perf" class="nav-tab active px-3 py-2.5 text-[11px] font-bold text-gray-400 hover:text-white rounded-lg flex items-center gap-1.5 whitespace-nowrap flex-1 justify-center"
-        data-help="다양한 악기 음색(피아노/스트링/브라스/벨 등 25종)과 이펙트를 적용해 자유롭게 연주하는 공간입니다." data-tip="같은 곡을 음색만 바꿔가며 쳐보면 소리를 다루는 감각이 빠르게 늡니다.">
+        data-help="다양한 악기 음색(피아노/스트링/브라스/벨 등 28종)과 이펙트를 적용해 자유롭게 연주하는 공간입니다." data-tip="같은 곡을 음색만 바꿔가며 쳐보면 소리를 다루는 감각이 빠르게 늡니다.">
         <i class="fa-solid fa-sliders"></i> PERFORMANCE MODE
       </button>
       <button data-tab="edu" id="tab-edu" role="tab" aria-selected="false" aria-controls="content-edu" class="nav-tab px-3 py-2.5 text-[11px] font-bold text-gray-400 hover:text-white rounded-lg flex items-center gap-1.5 whitespace-nowrap flex-1 justify-center"
@@ -1647,11 +1647,14 @@ function setupGameKeyboardScrollSync(){
 }
 document.addEventListener('DOMContentLoaded', setupGameKeyboardScrollSync);
 
-/* ===================== 25종 음색 프리셋 (v1.4) ===================== */
+/* ===================== 28종 음색 프리셋 (v1.5) ===================== */
 const PATCHES = {
-  grandPiano:  {label:'Grand Piano',   color:'cyan',   oscs:[{type:'triangle',ratio:1,gain:1},{type:'sine',ratio:2.005,gain:0.35}], filter:{type:'lowpass',freq:3200,q:0.7}, env:{a:0.01,d:0.35,s:0.35,r:0.3}},
+  grandPiano:  {label:'Grand Piano',   color:'cyan',   oscs:[{type:'triangle',ratio:1,gain:0.7},{type:'triangle',ratio:1.004,gain:0.55},{type:'sine',ratio:2.005,gain:0.3},{type:'sine',ratio:4.01,gain:0.08}], filter:{type:'lowpass',freq:3200,q:0.7}, env:{a:0.01,d:0.35,s:0.35,r:0.3}},
   brightPiano: {label:'Bright Piano',  color:'cyan',   oscs:[{type:'sawtooth',ratio:1,gain:0.7},{type:'sine',ratio:2.0,gain:0.3}], filter:{type:'lowpass',freq:5200,q:0.6}, env:{a:0.005,d:0.25,s:0.3,r:0.25}},
   mellowPiano: {label:'Mellow Piano',  color:'cyan',   oscs:[{type:'sine',ratio:1,gain:1},{type:'triangle',ratio:2,gain:0.25}], filter:{type:'lowpass',freq:2200,q:0.5}, env:{a:0.02,d:0.5,s:0.4,r:0.4}},
+  uprightPiano: {label:'Upright Piano', color:'cyan',   oscs:[{type:'triangle',ratio:1,gain:0.9},{type:'sine',ratio:2,gain:0.25},{type:'sine',ratio:3,gain:0.1}], filter:{type:'lowpass',freq:2600,q:0.6}, env:{a:0.008,d:0.4,s:0.3,r:0.35}},
+  concertGrand: {label:'Concert Grand', color:'cyan',   oscs:[{type:'sawtooth',ratio:1,gain:0.35},{type:'triangle',ratio:1,gain:0.5},{type:'sine',ratio:2,gain:0.3},{type:'sine',ratio:3,gain:0.15},{type:'sine',ratio:4,gain:0.08}], filter:{type:'lowpass',freq:4200,q:0.6}, env:{a:0.005,d:0.4,s:0.4,r:0.4}},
+  softFeltPiano: {label:'Soft Felt Piano', color:'cyan', oscs:[{type:'sine',ratio:1,gain:1},{type:'sine',ratio:2,gain:0.15}], filter:{type:'lowpass',freq:1800,q:0.4}, env:{a:0.02,d:0.6,s:0.45,r:0.5}},
   rhodesEP:    {label:'Rhodes EP',     color:'pink',   oscs:[{type:'sine',ratio:1,gain:1},{type:'sine',ratio:2.0,gain:0.5},{type:'sine',ratio:7.0,gain:0.08}], filter:{type:'lowpass',freq:2600,q:0.4}, env:{a:0.005,d:0.6,s:0.45,r:0.35}},
   wurlitzerEP: {label:'Wurlitzer EP',  color:'pink',   oscs:[{type:'sawtooth',ratio:1,gain:0.6},{type:'sine',ratio:1,gain:0.4}], filter:{type:'lowpass',freq:2000,q:1.2}, env:{a:0.01,d:0.4,s:0.4,r:0.3}, tremolo:{rate:5.5,depth:0.15}},
   fmEP:        {label:'FM E.Piano',    color:'pink',   oscs:[{type:'sine',ratio:1,gain:1},{type:'sine',ratio:3.01,gain:0.2}], filter:{type:'lowpass',freq:3600,q:0.3}, env:{a:0.003,d:0.5,s:0.3,r:0.3}},
